@@ -63,15 +63,15 @@ and open the template in the editor.
                     <f:selectItem itemLabel="Cliente" itemValue="Cliente" value="#{registroController.usuario.tipoUsuario}" />
                 </p:selectOneMenu>
                 
-                
-                <p:captcha label="Captcha" />
-            <br />
+                <p:outputLabel/>
+                <p:captcha label="Captcha"/>
+           
                 
             <p:commandButton value="Confirmar" update="@form" action="#{registroController.registrar()}" />
-                <p:commandButton  value="Atrás" action="index" update="@form"/>
+            <p:commandButton  value="Atrás" action="index" update="@form"/>
                 
-                 
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <p:outputLabel/>   
+            <div class="g-signin2" data-onsuccess="onSignIn" style="width: 450px; color: black; border: solid black 1px; border-radius: 5px;"></div>
                  
             </p:panelGrid>
                
