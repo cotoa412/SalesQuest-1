@@ -62,9 +62,7 @@ and open the template in the editor.
                     <f:selectItem itemLabel="Cliente" itemValue="Cliente" value="#{registroController.usuario.tipoUsuario}" />
                 </p:selectOneMenu>
                 
-                <p:outputLabel/>
-                <p:captcha label="Captcha"/>
-           
+                
                 
                 <p:commandButton value="Confirmar" update="@form" action="#{registroController.registrar()}" />
                 <p:commandButton  value="Atrás" action="index" update="@form"/>
@@ -72,6 +70,11 @@ and open the template in the editor.
                 
             </p:panelGrid>
               
+            </h:form>
+            
+            <h:form style="display: flex; align-content: center; justify-content: center;width: 600px; margin: 10px auto 5px; padding: 5px;">
+                <p:messages showDetail="true"/>
+                <p:captcha label="Captcha" />
             </h:form>
             
             <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
