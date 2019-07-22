@@ -17,14 +17,14 @@ public class Usuario {
     private String correo;
     private String nombreUsuario;
     private String contrasenna;
-    private String tipoUsuario;
+    private TipoUsuario tipoUsuario;
     
     
     public Usuario() {
         
     }
     
-    public Usuario(int idUsuario,String nombre,String apellidos,String correo,String nombreUsuario,String contrasenna,String tipoUsuario) {
+    public Usuario(int idUsuario,String nombre,String apellidos,String correo,String nombreUsuario,String contrasenna,TipoUsuario tipoUsuario) {
            
          this.idUsuario = idUsuario;
          this.nombre = nombre;
@@ -36,7 +36,7 @@ public class Usuario {
          
      }
     
-     public Usuario(String nombre,String apellidos,String correo,String nombreUsuario,String contrasenna,String tipoUsuario) {
+     public Usuario(String nombre,String apellidos,String correo,String nombreUsuario,String contrasenna,TipoUsuario tipoUsuario) {
            
          this.nombre = nombre;
          this.apellidos = apellidos;
@@ -95,11 +95,11 @@ public class Usuario {
         this.contrasenna = contrasenna;
     }
 
-    public String getTipoUsuario() {
+    public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
     

@@ -9,6 +9,10 @@ import com.salesquest.model.Usuario;
 import com.salesquest.servicio.Servicio_Codigo;
 import com.salesquest.servicio.Servicio_Usuario;
 import com.salesquest.model.Codigo;
+import com.salesquest.model.TipoUsuario;
+import com.salesquest.servicio.Servicio_TipoUsuario;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +26,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,19 +39,54 @@ public class RegistroController {
     
     private Usuario usuario = new Usuario();
    
-    
-    public RegistroController(){
-    
-        Usuario usuario = new Usuario();
+    private List<TipoUsuario> listaTipoUsuarios = new ArrayList<TipoUsuario>();
+   
+    public void linkRegistrar() {
+        this.cargarLista();
+        this.redirect();
         
     }
+    
+   public void redirect() {
 
+        try {
+           
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/registro.xhtml?faces-redirect=true");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void cargarLista() {
+     Servicio_TipoUsuario s = new Servicio_TipoUsuario();
+        for (Object obj : s.mostrarDatos()) {
+            
+            this.listaTipoUsuarios.add((TipoUsuario)obj);
+            
+        }
+
+    }
+    
     public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    
+    public List<TipoUsuario> getTipoUsuarios(){
+        return this.listaTipoUsuarios;
+    }
+    
+    public void setTipoUsuarios(TipoUsuario usuario){
+        this.listaTipoUsuarios.add(usuario);
     }
     
     public String registrar(){

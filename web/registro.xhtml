@@ -56,23 +56,26 @@ and open the template in the editor.
                 <p:outputLabel value="Tipo usuario"/>
                 
                 
-                <p:selectOneMenu id="tipo-usuario" style="width:150px">
-                    <f:selectItem itemLabel="Tipo cliente" itemValue="#{registroController.usuario.tipoUsuario}" /> 
-                    <f:selectItem itemLabel="Oferente" itemValue="Oferente" value="#{registroController.usuario.tipoUsuario}"/>
-                    <f:selectItem itemLabel="Cliente" itemValue="Cliente" value="#{registroController.usuario.tipoUsuario}" />
+                <p:selectOneMenu id="tipo" value="#{registroController.usuario.tipoUsuario}" 
+                                 style="min-width:150px; width:250px;" converter="usuarioConverter">
+                                        
+                    <f:selectItems value="#{registroController.tipoUsuarios}" var="tipoUsuario" 
+                                   itemLabel="#{tipoUsuario.nombreTipoUsuario}" itemValue="#{tipoUsuario}" />
+                     
                 </p:selectOneMenu>
-                
-                
                 
                 <p:commandButton value="Confirmar" update="@form" action="#{registroController.registrar()}" />
                 <p:commandButton  value="Atrás" action="index" update="@form"/>
-                
-                
+                  
             </p:panelGrid>
               
             </h:form>
             
-            <h:form style="display: flex; align-content: center; justify-content: center;width: 600px; margin: 10px auto 5px; padding: 5px;">
+           
+                
+          
+            
+            <h:form style="display: flex; align-content: flex-end; justify-content: center;width: 600px; margin: 10px auto; padding: 5px;">
                 <p:messages showDetail="true"/>
                 <p:captcha label="Captcha" />
             </h:form>

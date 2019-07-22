@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.salesquest.servicio;
+import com.salesquest.model.TipoUsuario;
 import com.salesquest.model.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,7 +23,9 @@ public class Servicio_Usuario extends Servicio implements IDAO{
           
         ResultSet rs = null;
         Statement stmt = null;
+        Servicio_TipoUsuario s = new Servicio_TipoUsuario();
         List<Object> listaRetorno = new ArrayList<Object>();
+        TipoUsuario tpu = null;
         
         try{
             this.conectar();
@@ -40,9 +43,15 @@ public class Servicio_Usuario extends Servicio implements IDAO{
                String correo = rs.getString("correo");
                String nombreUsuario = rs.getString("nombreUsuario");
                String contrasenna = rs.getString("contrasenna");
-               String tipoUsuario = rs.getString("tipoUsuario");
+               int tipoUsuario = rs.getInt("tipoUsuario");
                
-               listaRetorno.add(new Usuario(id,nom,apellidos,correo,nombreUsuario,contrasenna,tipoUsuario));
+               for (Object tp : s.mostrarDatos()) {
+                   if (((TipoUsuario)tp).getIdTipoUsuario() == tipoUsuario) {
+                       tpu = ((TipoUsuario)tp);
+                   }
+               }
+               
+               listaRetorno.add(new Usuario(id,nom,apellidos,correo,nombreUsuario,contrasenna,tpu));
             
            }
              
@@ -73,7 +82,7 @@ public class Servicio_Usuario extends Servicio implements IDAO{
            
            
            stmt = conn.createStatement();
-           String sql = "INSERT INTO usuario(nombre, apellidos, correo, nombreUsuario, contrasenna, tipoUsuario) VALUE('"+((Usuario)obj).getNombre()+"','"+((Usuario)obj).getApellidos()+"','"+((Usuario)obj).getCorreo()+"','"+((Usuario)obj).getNombreUsuario()+"','"+((Usuario)obj).getContrasenna()+"','"+((Usuario)obj).getTipoUsuario()+"')";                                                                                                            
+           String sql = "INSERT INTO usuario(nombre, apellidos, correo, nombreUsuario, contrasenna, tipoUsuario) VALUE('"+((Usuario)obj).getNombre()+"','"+((Usuario)obj).getApellidos()+"','"+((Usuario)obj).getCorreo()+"','"+((Usuario)obj).getNombreUsuario()+"','"+((Usuario)obj).getContrasenna()+"',"+((Usuario)obj).getTipoUsuario().getIdTipoUsuario()+")";                                                                                                            
            int i = stmt.executeUpdate(sql);
            
        }catch(Exception e){
