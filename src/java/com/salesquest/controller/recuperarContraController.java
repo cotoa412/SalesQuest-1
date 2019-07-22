@@ -20,6 +20,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -159,8 +160,7 @@ public class recuperarContraController {
         return dir;
     }
 
-    public String verificarNuevaContra() {//limpiar la variable de tempcontra al terminar (memoria)
-        String dir = "";
+    public void verificarNuevaContra() {//limpiar la variable de tempcontra al terminar (memoria)
         Servicio_Usuario s = new Servicio_Usuario();
         for (Object obj : s.mostrarDatos()) {//recorrer mostrarDatos         
             if (this.nuevaContrasenna == this.tempContrasenna && this.nuevaContrasenna != "" && this.tempContrasenna != "") {//algunas condiciones 
@@ -169,7 +169,18 @@ public class recuperarContraController {
                     ((Usuario) obj).setContrasenna(tempContrasenna);//hace que la contrasena del usuario sea igual a tempcoontrasena
                     s.actualizarDato(obj);//llama al update                    
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Se ha actualizado su contraseña!"));
-                    dir = "landingPage.xhtml?faces-redirect=true";
+                    try {
+                        HttpServletRequest request = (HttpServletRequest) FacesContext
+                                .getCurrentInstance().getExternalContext().getRequest();
+                        FacesContext
+                                .getCurrentInstance()
+                                .getExternalContext()
+                                .redirect(
+                                        request.getContextPath()
+                                        + "/index.xhtml?faces-redirect=true");//hay que cambiar porque el index no va a ser el login.
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (((Usuario) obj).getContrasenna() == this.nuevaContrasenna) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Su contraseña no puede ser la misma que la antigua!"));
@@ -183,7 +194,6 @@ public class recuperarContraController {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Algo salio mal! Por favor reintentar."));
             }
         }
-        return dir;
 
     }
 }
