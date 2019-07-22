@@ -93,7 +93,28 @@ public class Servicio_Usuario extends Servicio implements IDAO{
 
     @Override
     public void actualizarDato(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       Statement stmt = null;
+       try{
+           this.conectar();//Me conecto a la base de datos.
+           
+           
+           stmt = conn.createStatement();
+           String sql = "UPDATE 'usuario' SET (contrasenna) = ('"+((Usuario)obj).getContrasenna()+"') WHERE idUsuario = ('"+((Usuario)obj).getIdUsuario()+"')";                                                                                                            
+           int i = stmt.executeUpdate(sql);
+           
+       }catch(Exception e){
+         e.printStackTrace();
+       }
+       finally{
+           
+       }
+       try{
+           stmt.close();
+           
+           this.desconectar();//Me desconecto.
+       }catch (Exception e){
+           e.printStackTrace();
+       }   
     }
 
     @Override

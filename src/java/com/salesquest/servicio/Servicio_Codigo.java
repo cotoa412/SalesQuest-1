@@ -108,8 +108,8 @@ public class Servicio_Codigo extends Servicio implements IDAO {
     }
 
     @Override
-    public void actualizarDato(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actualizarDato(Object obj) {//actualiza la contra
+     
     }
 
     @Override

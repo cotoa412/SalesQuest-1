@@ -28,15 +28,15 @@ import javax.mail.internet.MimeMessage;
 @ManagedBean(name = "recuperarContraController")
 @SessionScoped
 public class recuperarContraController {
-    
+
     private Usuario usuario = new Usuario();
     private String correo;
     private String codigo;
     private String nuevaContrasenna;
-    
-    
-    public recuperarContraController(){
-    
+    private String tempContrasenna; //variable temporal para comparar, la borro limpio despues de
+
+    public recuperarContraController() {
+
     }
 
     public Usuario getUsuario() {
@@ -70,91 +70,120 @@ public class recuperarContraController {
     public void setNuevaContrasenna(String nuevaContrasenna) {
         this.nuevaContrasenna = nuevaContrasenna;
     }
- 
-    public void recuperarContrasenna(){
-        
+
+    public String getTempContrasenna() {
+        return tempContrasenna;
+    }
+
+    public void setTempContrasenna(String tempContrasenna) {
+        this.tempContrasenna = tempContrasenna;
+    }
+
+    public void recuperarContrasenna() {
+
         Servicio_Usuario s = new Servicio_Usuario();
         Servicio_Codigo c = new Servicio_Codigo();
-        
-        for (Object obj: s.mostrarDatos()) {
-            
-            if (((Usuario)obj).getCorreo().equalsIgnoreCase(correo)) {
-                
+
+        for (Object obj : s.mostrarDatos()) {
+
+            if (((Usuario) obj).getCorreo().equalsIgnoreCase(correo)) {
+
                 c.insertarDato(obj);
-                usuario = ((Usuario)obj);
-           
+                usuario = ((Usuario) obj);
+
             }
         }
-        
+
         for (Object cod : c.mostrarDatos()) {
-            
-            if (usuario.getIdUsuario() == ((Codigo)cod).getUsuario()) {
-                
+
+            if (usuario.getIdUsuario() == ((Codigo) cod).getUsuario()) {
+
                 Properties p = new Properties();
-        
-        p.put("mail.smtp.host", "smtp.gmail.com");
-        p.put("mail.smtp.starttls.enable", "true");
-        p.put("mail.smtp.port", "587");
-        p.put("mail.smtp.user", "parapropruebas@gmail.com");
-        p.put("mail.smtp.auth","true");
-        
-        Session session = Session.getDefaultInstance(p,null);
-        
-        MimeMessage m = new MimeMessage(session);
-       
-        try{
-        
-        m.setFrom(new InternetAddress("parapropruebas@gmail.com"));
-        
-        m.addRecipient(Message.RecipientType.TO, new InternetAddress(usuario.getCorreo()) );
-        m.setSubject("Recuperacion de contraseña.");
-          
-       
-        String mensaje = "El código de recuperación es: " + ((Codigo)cod).getCodigo() + " con el puede proceder a cambiar su contraseña." ;
-        m.setText(mensaje);
-        
-        Transport transport = session.getTransport("smtp");
-        transport.connect("parapropruebas@gmail.com", "123456pruebas");
-        transport.sendMessage(m, m.getAllRecipients());
-        transport.close();
-        
-        
-        }catch(MessagingException me){
-            me.printStackTrace();
-        }
-                    
+
+                p.put("mail.smtp.host", "smtp.gmail.com");
+                p.put("mail.smtp.starttls.enable", "true");
+                p.put("mail.smtp.port", "587");
+                p.put("mail.smtp.user", "parapropruebas@gmail.com");
+                p.put("mail.smtp.auth", "true");
+
+                Session session = Session.getDefaultInstance(p, null);
+
+                MimeMessage m = new MimeMessage(session);
+
+                try {
+
+                    m.setFrom(new InternetAddress("parapropruebas@gmail.com"));
+
+                    m.addRecipient(Message.RecipientType.TO, new InternetAddress(usuario.getCorreo()));
+                    m.setSubject("Recuperacion de contraseña.");
+
+                    String mensaje = "El código de recuperación es: " + ((Codigo) cod).getCodigo() + " con el puede proceder a cambiar su contraseña.";
+                    m.setText(mensaje);
+
+                    Transport transport = session.getTransport("smtp");
+                    transport.connect("parapropruebas@gmail.com", "123456pruebas");
+                    transport.sendMessage(m, m.getAllRecipients());
+                    transport.close();
+
+                } catch (MessagingException me) {
+                    me.printStackTrace();
+                }
+
             }
-            
+
         }
-        
-      correo = null;  
+
+        correo = null;
     }
-    
-    public String confirmarCodigo(){
-    
+
+    public String confirmarCodigo() {
+
         Servicio_Usuario s = new Servicio_Usuario();
         Servicio_Codigo c = new Servicio_Codigo();
         String dir = "";
-        
-        for (Object obj: c.mostrarDatos()) {
-            
-            if (((Codigo)obj).getCodigo().equalsIgnoreCase(codigo)) {
-                
+
+        for (Object obj : c.mostrarDatos()) {
+
+            if (((Codigo) obj).getCodigo().equalsIgnoreCase(codigo)) {
+
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Correcto."));
                 dir = "OlvidoContraCambiar.xhtml?faces-redirect=true";
-                
-            }else{
-            
+
+            } else {
+
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Código incorrecto."));
-                
+
             }
-            
-        }    
+
+        }
         return dir;
     }
-    
-    
-    
-    
-    
+
+    public String verificarNuevaContra() {//limpiar la variable de tempcontra al terminar (memoria)
+        String dir = "";
+        Servicio_Usuario s = new Servicio_Usuario();
+        for (Object obj : s.mostrarDatos()) {//recorrer mostrarDatos         
+            if (this.nuevaContrasenna == this.tempContrasenna && this.nuevaContrasenna != "" && this.tempContrasenna != "") {//algunas condiciones 
+
+                if (((Usuario) obj).getContrasenna() != this.nuevaContrasenna) {//si la nueva contra es diferente a la vieja entonces que la actualize
+                    ((Usuario) obj).setContrasenna(tempContrasenna);//hace que la contrasena del usuario sea igual a tempcoontrasena
+                    s.actualizarDato(obj);//llama al update                    
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Se ha actualizado su contraseña!"));
+                    dir = "landingPage.xhtml?faces-redirect=true";
+                }
+            } else if (((Usuario) obj).getContrasenna() == this.nuevaContrasenna) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Su contraseña no puede ser la misma que la antigua!"));
+            } else if (this.nuevaContrasenna != this.tempContrasenna) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "La contraseña ingresada no fue repetida correctamente!"));
+            } else if (this.nuevaContrasenna == "") {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Por favor llenar los espacios!"));
+            } else if (this.tempContrasenna == "") {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Por favor llenar los espacios!"));
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Algo salio mal! Por favor reintentar."));
+            }
+        }
+        return dir;
+
+    }
 }
