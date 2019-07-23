@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Registro</title>
+        <meta name="google-signin-scope" content="profile email"/>
+        <meta name="google-signin-client_id" content="607198644487-52v06mono4as484c1j4mobsm7cco029b.apps.googleusercontent.com"/>
+        <script src="https://apis.google.com/js/platform.js" async="defer" ></script>
+        <link rel="stylesheet" href="css/newcss.css"/>
+        
+    </h:head>
+    <h:body>
+        
+        <p:panel id="basic" header="Registrar"  style="margin-bottom:20px;text-align: center;">
+        
+        <p:panel style="font-size: 20px;text-align: center;width: 640px;margin: 0 auto;">
+            
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            
+            <p:messages showDetail="true"/>
+            
+            <h:form id="for" style="display: flex;">
+                
+                <p:panelGrid columns="2" 
+                             style="width: 600px;">
+            
+                <p:outputLabel value="Nombre:" />
+                <p:inputText id="nombre" value="#{registroController.usuario.nombre}" style="width: 400px;"/>
+            
+                <p:outputLabel value="Apellidos:"/>
+                <p:inputText id="apellidos" value="#{registroController.usuario.apellidos}" style="width: 400px;"/>
+            
+                <p:outputLabel value="Correo:"/>
+                <p:inputText id="correo" value="#{registroController.usuario.correo}" disabled="false" style="width: 400px;"/>
+            
+                <p:outputLabel value="Nombre usuario:"/>
+                <p:inputText value="#{registroController.usuario.nombreUsuario}" style="width: 400px;"/>
+            
+                <p:outputLabel value="Contraseña:"/>
+                <p:password value="#{registroController.usuario.contrasenna}" match="clave2" style="width: 400px;"/>
+            
+                <p:outputLabel value="Confirmar contraseña:"/>
+                <p:password id="clave2" style="width: 400px;"/>
+            
+                <p:outputLabel value="Tipo usuario"/>
+                
+                
+                <p:selectOneMenu id="tipo" value="#{registroController.usuario.tipoUsuario}" 
+                                 style="min-width:150px; width:250px;" converter="usuarioConverter">
+                                        
+                    <f:selectItems value="#{registroController.tipoUsuarios}" var="tipoUsuario" 
+                                   itemLabel="#{tipoUsuario.nombreTipoUsuario}" itemValue="#{tipoUsuario}" />
+                     
+                </p:selectOneMenu>
+                
+                <p:commandButton value="Confirmar" update="@form" action="#{registroController.registrar()}" />
+                <p:commandButton  value="Atrás" action="LandingPage" update="@form"/>
+                  
+            </p:panelGrid>
+              
+            </h:form>
+            
+           
+                
+          
+            
+            <h:form style="display: flex; align-content: flex-end; justify-content: center;width: 600px; margin: 10px auto; padding: 5px;">
+                <p:messages showDetail="true"/>
+                <p:captcha label="Captcha" />
+            </h:form>
+            
+            <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
+                <div class="g-signin2" data-onsuccess="onSignIn" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
+            </div>
+            
+                        
+            
+        </p:panel>
+        </p:panel> 
+        
+    </h:body>
+    
+    <script >
+        
+           function onSignIn(googleUser) {
+                    // Useful data for your client-side scripts:
+           var profile = googleUser.getBasicProfile();
+                    
+           document.getElementById('for:nombre').value = profile.getGivenName();
+           document.getElementById('for:apellidos').value = profile.getFamilyName();
+           document.getElementById('for:correo').value = profile.getEmail();
+           
+           document.getElementById('for:correo').disabled   =   true;
+        
+           console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+           console.log('Full Name: ' + profile.getName());
+           console.log('Given Name: ' + profile.getGivenName());
+           console.log('Family Name: ' + profile.getFamilyName());
+           console.log("Image URL: " + profile.getImageUrl());
+           console.log("Email: " + profile.getEmail());
+ 
+                   // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+            
+            
+           // googleUser.auth.signOut();
+           // gapi.auth.signOut();
+            
+            }
+                                                    
+    </script>
+</html>
