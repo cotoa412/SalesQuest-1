@@ -4,6 +4,11 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
+        <style>
+    body { 
+    background-color: #ccccff;
+    }
+    </style> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ingreso</title>
         <link rel="stylesheet" href="css/newcss.css"/>
@@ -32,14 +37,15 @@
                 
                 <p:commandButton value="Ingresar" 
                                  actionListener="#{loginController.ingresar()}"
-                                 update="@form" action="landingPage.xhtml"/>
+                                 update="@form" action="landingPageLogged.xhtml"/>
                 
                 
             </h:panelGrid>
             
-            <h:commandLink actionListener="#{registroController.linkRegistrar()}" value="Registrar"/> 
-            &nbsp;&nbsp;
+            
+            
             <h:link outcome="olvidoContra">Olvide contraseña</h:link>
+                        
             
         </h:form>
 

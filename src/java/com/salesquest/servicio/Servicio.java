@@ -18,7 +18,7 @@ public abstract class Servicio {
     protected static String DB_URL = "jdbc:mysql://localhost:3306/salesquest"+"?useTimezone=true&serverTimezone=UTC";
     
     protected static String USER = "root";
-    protected static String PASS = "123456";
+    protected static String PASS = "canales00";
     
     protected static Connection conn =  null;
     

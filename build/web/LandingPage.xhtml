@@ -27,13 +27,10 @@ and open the template in the editor.
         
         <p:menuitem value="Home" url="https://www.google.com" icon="pi pi-times" />
  
-        <p:menuitem value="Browse" url="https://www.google.com" icon="pi pi-times" />
- 
-        <p:menuitem value="About Us" url="https://www.google.com" icon="pi pi-times" />
- 
-        <p:menuitem value="Profile" url="https://www.google.com" icon="pi pi-times" />
+        <p:menuitem value="Acerca de Nosotros" url="https://www.google.com" icon="pi pi-times" />
         
-        <p:menuitem value="Registrar" url="http://localhost:8080/SalesQuest/faces/registro.xhtml" icon="pi pi-times" />
+        <p:menuitem value="Registrar" actionListener="#{registroController.cargarLista()}"
+                                 update="@form" action="registro.xhtml" icon="pi pi-times" />
         
         <p:menuitem value="Ingresar" url="http://localhost:8080/SalesQuest/faces/login.xhtml" icon="pi pi-times" />
         
@@ -69,7 +66,7 @@ and open the template in the editor.
         </p:panelGrid>
  
         <f:facet name="footer">
-                .
+                
         </f:facet>
     </p:carousel>
  </h:form>
@@ -90,7 +87,7 @@ and open the template in the editor.
         </p:panelGrid>
  
         <f:facet name="footer">
-                .
+                 
         </f:facet>
     </p:carousel>
  </h:form>

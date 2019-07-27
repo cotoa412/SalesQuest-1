@@ -16,9 +16,9 @@ and open the template in the editor.
     background-color: #ccccff;
     }
     </style> 
-
-    </h:head>
  
+    </h:head>
+ </h:form>
     <h:body>
     <h:form>  
     <p:growl id="messages"/>
@@ -27,14 +27,13 @@ and open the template in the editor.
         
         <p:menuitem value="Home" url="https://www.google.com" icon="pi pi-times" />
  
-        <p:menuitem value="Navegar" url="https://www.google.com" icon="pi pi-times" />
  
         <p:menuitem value="Acerca de nosotros" url="https://www.google.com" icon="pi pi-times" />
  
         <p:menuitem value="Perfil   " url="https://www.google.com" icon="pi pi-times" />
  
         <f:facet name="options">
-            <h:outputText value="Bienvenido Cutiepie :3" />
+            <h:outputText value="Bienvenido Consumidor" />
             <h:outputText value="      " />
             <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
             <p:commandButton type="button" value="Cerrar Sesión" icon="pi pi-home"  />
@@ -46,7 +45,7 @@ and open the template in the editor.
    
         
         
-        <h:form id="form1">
+        <h:form id="form10">
             <p:carousel value="aaaa" headerText="Reciente" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
                 <img src="Images/download.jpg" height="120" width="150" />
         
@@ -68,7 +67,7 @@ and open the template in the editor.
         </f:facet>
     </p:carousel>
  </h:form>
-        <h:form id="form2">
+        <h:form id="form20">
             <p:carousel value="aaaa" headerText="Destacado" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
                 <img src="Images/PikachuAlola..PNG" height="150" width="150" />
         
@@ -89,7 +88,7 @@ and open the template in the editor.
         </f:facet>
     </p:carousel>
  </h:form>
-        <h:form id="form3">
+        <h:form id="form30">
             <p:carousel value="aaaa" headerText="Trending" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
                 <img src="Images/Capture11.PNG" height="130" width="150" />
         
@@ -128,6 +127,5 @@ and open the template in the editor.
     </p:outputPanel>
         </h:form>
        
-    
     </h:body>
 </html>
