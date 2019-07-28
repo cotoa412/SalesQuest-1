@@ -32,7 +32,7 @@ and open the template in the editor.
                 <h:outputLabel value=""/>
                 
                 <h:outputLabel value="Nueva Contraseña:"/>
-                <p:inputText value="#{recuperarContraController.nuevaContrasenna}" /> <!--  progamar -->
+                <p:password value="#{recuperarContraController.nuevaContrasenna}" /> <!--  progamar -->
                 
                 <h:outputLabel value="Repetir Contraseña:"/>
                 <p:password value="#{recuperarContraController.tempContrasenna}" /> <!--  progamar  -->
@@ -41,7 +41,8 @@ and open the template in the editor.
             </h:panelGrid>
 
            <br></br>
-           <p:commandButton value="Cambiar" />  <!--  progamar  -->
+           <p:commandButton value="Cambiar" action="#{recuperarContraController.verificarNuevaContra()}" update="@form"/>
+           <!--  progamar  -->
             
         </h:form>
         </p:panel>

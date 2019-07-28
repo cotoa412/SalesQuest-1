@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -123,7 +124,7 @@ public class RegistroController {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correct", "Correct");
             FacesContext.getCurrentInstance().addMessage(null, msg);
             
-         redirect =  "index.xhtml?faces-redirect=true";
+         redirect =  "login.xhtml?faces-redirect=true";
             
         }else{
             

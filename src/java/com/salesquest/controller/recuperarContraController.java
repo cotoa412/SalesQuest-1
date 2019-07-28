@@ -162,12 +162,14 @@ public class recuperarContraController {
 
     public void verificarNuevaContra() {//limpiar la variable de tempcontra al terminar (memoria)
         Servicio_Usuario s = new Servicio_Usuario();
+        Usuario u = new Usuario();
         for (Object obj : s.mostrarDatos()) {//recorrer mostrarDatos         
             if (this.nuevaContrasenna == this.tempContrasenna && this.nuevaContrasenna != "" && this.tempContrasenna != "") {//algunas condiciones 
 
                 if (((Usuario) obj).getContrasenna() != this.nuevaContrasenna) {//si la nueva contra es diferente a la vieja entonces que la actualize
+                    u = ((Usuario) obj);
                     ((Usuario) obj).setContrasenna(tempContrasenna);//hace que la contrasena del usuario sea igual a tempcoontrasena
-                    s.actualizarDato(obj);//llama al update                    
+                    s.actualizarDato(u);//llama al update                    
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Se ha actualizado su contraseña!"));
                     try {
                         HttpServletRequest request = (HttpServletRequest) FacesContext

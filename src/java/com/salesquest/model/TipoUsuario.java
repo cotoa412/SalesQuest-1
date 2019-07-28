@@ -44,8 +44,8 @@ public class TipoUsuario {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + this.idTipoUsuario;
-        hash = 29 * hash + Objects.hashCode(this.nombreTipoUsuario);
+        hash = 79 * hash + this.idTipoUsuario;
+        hash = 79 * hash + Objects.hashCode(this.nombreTipoUsuario);
         return hash;
     }
 
@@ -69,6 +69,5 @@ public class TipoUsuario {
         }
         return true;
     }
-    
     
 }
