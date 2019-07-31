@@ -11,8 +11,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:head>
-        <title>Registro</title>
-        
+        <title>Perfil</title>
     </h:head>
     <h:body>
         
@@ -31,40 +30,50 @@ and open the template in the editor.
                 <p:panelGrid columns="2" 
                              style="width: 600px;">
             
-                <p:outputLabel value="Nombrede la Empresa:" />
-                <p:inputText id="nombre" value="#{registroController.usuario.nombre}" style="width: 400px;"/>
+                <p:outputLabel value="Nombre:" />
+                <p:inputText id="nombre" value="#{perfilController.usuario.nombre}" style="width: 400px;" disabled="true"/>
             
-                <p:outputLabel value="Dirección:"/>
-                <p:inputText id="apellidos" value="#{registroController.usuario.apellidos}" style="width: 400px;"/>
+                <p:outputLabel value="Apellidos:" />
+                <p:inputText id="apellidos" value="#{perfilController.usuario.apellidos}" style="width: 400px;" disabled="true"/>
+                
+                <p:outputLabel value="Correo:" />
+                <p:inputText id="correo" value="#{perfilController.usuario.correo}" style="width: 400px;" disabled="true"/>
+                
+                <p:outputLabel value="Nombre de usuario:" />
+                <p:inputText id="nombreUsuario" value="#{perfilController.usuario.nombreUsuario}" style="width: 400px;" disabled="true"/>
+                
+                <p:outputLabel value="Dirección:" />
+                <p:inputText id="dirección" value="" style="width: 400px;"/>
+                
+                <p:outputLabel value="Fecha de nacimiento:"/>
+                <p:calendar style="width: 400px;"/>
             
                 <p:outputLabel value="Teléfono:"/>
-                <p:inputText id="correo" value="#{registroController.usuario.correo}" disabled="false" style="width: 400px;"/>
+                <p:inputText id="telefono" value="#{registroController.usuario.correo}" disabled="false" style="width: 400px;"/>
             
                 <p:outputLabel value="Estado civíl:"/>
-                <p:inputText value="#{registroController.usuario.nombreUsuario}" style="width: 400px;"/>
+                <p:inputText value="" style="width: 400px;"/>
+                
+                <p:outputLabel value="Tipo Uuario"/>
+                <p:inputText value="#{perfilController.usuario.tipoUsuario.nombreTipoUsuario}" style="width: 400px;" disabled="true"/>
         
-            
                 <p:outputLabel value="Categorías favoritas"/>
-                
-                
-                <p:selectOneMenu id="tipo-usuario" style="width:150px">
+                <p:selectOneMenu id="tipo-usuario" style="width:400px">
                     <f:selectItem itemLabel="Categoría Favorita" itemValue="#{registroController.usuario.tipoUsuario}" /> 
-                    <f:selectItem itemLabel="Lácteos" itemValue="Lácteos" value="#{registroController.usuario.tipoUsuario}"/>
-                    <f:selectItem itemLabel="Enlatados" itemValue="Enlatados" value="#{registroController.usuario.tipoUsuario}" />
-                    <f:selectItem itemLabel="Arinas" itemValue="Arinas" value="#{registroController.usuario.tipoUsuario}" />
+                    <f:selectItem itemLabel="Ropa" itemValue="Ropa" value="#{registroController.usuario.tipoUsuario}"/>
+                    <f:selectItem itemLabel="Deportes" itemValue="Deportes" value="#{registroController.usuario.tipoUsuario}" />
+                    <f:selectItem itemLabel="Joyeria" itemValue="Joyeria" value="#{registroController.usuario.tipoUsuario}" />
                 </p:selectOneMenu>
-    
-                <p:commandButton  value="Editar perfíl" action="index" update="@form"/>
+                
+                <p:outputLabel/>
+                <p:commandButton  value="cargar" actionListener="#{perfilController.cargarDatosUsuario()}" update="@form"/>
+                
+                <p:commandButton  value="Guardar" update="@form"/>
                 
             </p:panelGrid>
               
             </h:form>
-            
-            <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
-                <div class="g-signin2" data-onsuccess="onSignIn" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
-            </div>
-            
-                                  
+                                          
         </p:panel>
         </p:panel> 
         

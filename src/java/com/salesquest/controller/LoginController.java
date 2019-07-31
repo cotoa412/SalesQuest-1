@@ -5,10 +5,15 @@
  */
 package com.salesquest.controller;
 
+import com.salesquest.model.TipoUsuario;
+import com.salesquest.model.Usuario;
+import com.salesquest.servicio.Servicio_TipoUsuario;
+import com.salesquest.servicio.Servicio_Usuario;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -19,45 +24,91 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class LoginController {
 
-    private String usuario;
-    private String clave;
+    private String ingreso;
+    private String contra;
     private String mensaje;
+    
+    private Usuario usuario = new Usuario();
 
     public LoginController() {
         this.mensaje = "Bienvenidos a SalesQuest";
     }
 
-    public LoginController(String usuario, String clave) {
-        this.usuario = usuario;
-        this.clave = clave;
-    }
 
-    public void ingresar() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        if (this.getUsuario().equalsIgnoreCase("admin") && (this.getClave().equalsIgnoreCase("testtest"))) { //Usuario registrado
+    public void ingresoAlSistema(){
+        
+        Servicio_Usuario su = new Servicio_Usuario();
+        Servicio_TipoUsuario st = new Servicio_TipoUsuario();
+        
+        
+        for (Object obj : su.mostrarDatos()) {
+            if (((Usuario)obj).getNombreUsuario().equalsIgnoreCase(ingreso) && ((Usuario)obj).getContrasenna().equalsIgnoreCase(contra)) {
+                
+                usuario = ((Usuario)obj);
 
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", this.getUsuario()));
-
-        } else {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No es admin"));
+            }else{
+                
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario o contraseña incorrecta.");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+                
+            }
+        }
+        
+        
+        
+        if (usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("oferente")) {
+            
+            try {
+           
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/landingPageOferente.xhtml?faces-redirect=true");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        }else if(usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("consumidor")){
+    
+            try {
+           
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/landingPageLogged.xhtml?faces-redirect=true");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        }else{
+        
         }
         
     }
 
-    public String getUsuario() {
-        return usuario;
+    
+    public String getNombreUsuario() {
+        return ingreso;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(String ingreso) {
+        this.ingreso = ingreso;
     }
 
     public String getClave() {
-        return clave;
+        return contra;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setClave(String contra) {
+        this.contra = contra;
     }
 
     public String getMensaje() {
@@ -67,5 +118,15 @@ public class LoginController {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
 
 }

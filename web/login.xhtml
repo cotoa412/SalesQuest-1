@@ -28,7 +28,7 @@
                 <h:outputLabel value=""/>
                 
                 <h:outputLabel value="Usuario"/>
-                <p:inputText value="#{loginController.usuario}" />
+                <p:inputText value="#{loginController.nombreUsuario}" />
                 
                 <h:outputLabel value="Contraseña"/>
                 <p:password value="#{loginController.clave}" />
@@ -36,8 +36,8 @@
                 <h:outputLabel value=""/>
                 
                 <p:commandButton value="Ingresar" 
-                                 actionListener="#{loginController.ingresar()}"
-                                 update="@form" action="landingPageLogged.xhtml"/>
+                                 actionListener="#{loginController.ingresoAlSistema()}"
+                                 update="@form" />
                 
                 
             </h:panelGrid>
