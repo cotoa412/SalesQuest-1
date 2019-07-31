@@ -8,9 +8,11 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:form> 
     <h:head>
+        <title>SalesQuest</title>
     <style>
                 .fa {
                     padding: 20px;
@@ -47,7 +49,7 @@ and open the template in the editor.
  </h:form>
     <h:body>
         <p:graphicImage value="../Images/logo.png" height="100" width="150"/>
-        <h:link outcome="landingPageOferente">Oferente</h:link>
+        <h:link outcome="landingPageOferente">Consumidor</h:link>
     <h:form>  
     <p:growl id="messages"/>
  
@@ -64,7 +66,7 @@ and open the template in the editor.
             <h:outputText value="Bienvenido Consumidor" />
             <h:outputText value="      " />
             <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-            <p:commandButton type="button" value="Cerrar Sesión" icon="pi pi-home"  />
+            <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}" icon="pi pi-home"  />
         </f:facet>
     </p:menubar>
 </h:form>

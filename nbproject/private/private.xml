@@ -8,5 +8,14 @@
             <file>file:/C:/Users/Kainthel/Downloads/SalesQuest-master%20(4)/SalesQuest-master/web/login.xhtml</file>
             <file>file:/C:/Users/Kainthel/Downloads/SalesQuest-master%20(4)/SalesQuest-master/web/landingPageLogged.xhtml</file>
         </group>
+        <group name="Group 20190411-05:05:58">
+            <file>file:/C:/Users/Personal/Documents/NetBeansProjects/SalesQuest/web/perfil.xhtml</file>
+            <file>file:/C:/Users/Personal/Documents/NetBeansProjects/SalesQuest/web/registro.xhtml</file>
+            <file>file:/C:/Users/Personal/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/RegistroController.java</file>
+            <file>file:/C:/Users/Personal/Documents/NetBeansProjects/SalesQuest/web/login.xhtml</file>
+            <file>file:/C:/Users/Personal/Documents/NetBeansProjects/SalesQuest/web/landingPage.xhtml</file>
+            <file>file:/C:/Users/Personal/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/LoginController.java</file>
+            <file>file:/C:/Users/Personal/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/servicio/Servicio.java</file>
+        </group>
     </open-files>
 </project-private>

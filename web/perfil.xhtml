@@ -31,16 +31,16 @@ and open the template in the editor.
                              style="width: 600px;">
             
                 <p:outputLabel value="Nombre:" />
-                <p:inputText id="nombre" value="#{perfilController.usuario.nombre}" style="width: 400px;" disabled="true"/>
+                <p:inputText id="nombre" value="#{perfilController.perfil.usuario.nombre}" style="width: 400px;" disabled="true"/>
             
                 <p:outputLabel value="Apellidos:" />
-                <p:inputText id="apellidos" value="#{perfilController.usuario.apellidos}" style="width: 400px;" disabled="true"/>
+                <p:inputText id="apellidos" value="#{perfilController.perfil.usuario.apellidos}" style="width: 400px;" disabled="true"/>
                 
                 <p:outputLabel value="Correo:" />
-                <p:inputText id="correo" value="#{perfilController.usuario.correo}" style="width: 400px;" disabled="true"/>
+                <p:inputText id="correo" value="#{perfilController.perfil.usuario.correo}" style="width: 400px;" disabled="true"/>
                 
                 <p:outputLabel value="Nombre de usuario:" />
-                <p:inputText id="nombreUsuario" value="#{perfilController.usuario.nombreUsuario}" style="width: 400px;" disabled="true"/>
+                <p:inputText id="nombreUsuario" value="#{perfilController.perfil.usuario.nombreUsuario}" style="width: 400px;" disabled="true"/>
                 
                 <p:outputLabel value="Dirección:" />
                 <p:inputText id="dirección" value="" style="width: 400px;"/>
@@ -49,13 +49,13 @@ and open the template in the editor.
                 <p:calendar style="width: 400px;"/>
             
                 <p:outputLabel value="Teléfono:"/>
-                <p:inputText id="telefono" value="#{registroController.usuario.correo}" disabled="false" style="width: 400px;"/>
+                <p:inputText id="telefono" value="" disabled="false" style="width: 400px;"/>
             
                 <p:outputLabel value="Estado civíl:"/>
                 <p:inputText value="" style="width: 400px;"/>
                 
                 <p:outputLabel value="Tipo Uuario"/>
-                <p:inputText value="#{perfilController.usuario.tipoUsuario.nombreTipoUsuario}" style="width: 400px;" disabled="true"/>
+                <p:inputText value="#{perfilController.perfil.usuario.tipoUsuario.nombreTipoUsuario}" style="width: 400px;" disabled="true"/>
         
                 <p:outputLabel value="Categorías favoritas"/>
                 <p:selectOneMenu id="tipo-usuario" style="width:400px">

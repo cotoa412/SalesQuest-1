@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 @SessionScoped
 public class LoginController {
 
+    //private String tU;
     private String ingreso;
     private String contra;
     private String mensaje;
@@ -54,7 +55,11 @@ public class LoginController {
             }
         }
         
-        
+//        for (Object o : st.mostrarDatos()) {
+//            if (usuario.getTipoUsuario().getIdTipoUsuario() == ((TipoUsuario)o).getIdTipoUsuario()) {
+//                tU = ((TipoUsuario)o).getNombreTipoUsuario();
+//            }
+//        }
         
         if (usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("oferente")) {
             
@@ -72,7 +77,7 @@ public class LoginController {
                 e.printStackTrace();
             }
             
-        }else if(usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("consumidor")){
+        }else if(usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("cliente")){
     
             try {
            
@@ -93,21 +98,40 @@ public class LoginController {
         }
         
     }
+    
+    public void logout() {
+
+        try {
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .invalidateSession();
+
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/landingPage.xhtml?faces-redirect=true");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     
-    public String getNombreUsuario() {
+    public String getIngreso() {
         return ingreso;
     }
 
-    public void setUsuario(String ingreso) {
+    public void setIngreso(String ingreso) {
         this.ingreso = ingreso;
     }
 
-    public String getClave() {
+    public String getContra() {
         return contra;
     }
 
-    public void setClave(String contra) {
+    public void setContra(String contra) {
         this.contra = contra;
     }
 
