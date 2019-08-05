@@ -39,25 +39,30 @@ and open the template in the editor.
                 body { 
                     background-color: #ccccff;
                 }
-            </style> 
+            </style>
+            <style type="text/css">
+                body .ui-staticmessage.ui-message {
+                    width: 100%;
+                }
+            </style>
         </h:head>
     </h:form>
 
     <h:body>
         <p:graphicImage value="Images/logo.png" height="100" width="150"/> 
-        
-        
-        <h:form>  
-            <p:growl id="messages"/>
+
+
+        <h:form>
+            <p:growl id="messages" showDetail="true" life="2000" />
 
             <p:menubar>
-                <p:menuitem value="Promociones" url="https://www.google.com" icon="pi pi-times" />
+                <p:menuitem value="Promociones" url="https://www.google.com"/>
 
-                <p:menuitem value="Contactenos" url="https://www.google.com" icon="pi pi-times" /> 
+                <p:menuitem value="Contactenos" url="http://localhost:8080/SalesQuest/faces/Contacto.xhtml"/> 
 
-                <p:menuitem value="Registrar" actionListener="#{registroController.linkRegistrar()}" icon="pi pi-times" />
+                <p:menuitem value="Registrar" actionListener="#{registroController.linkRegistrar()}"/>
 
-                <p:menuitem value="Ingresar" url="http://localhost:8080/SalesQuest/faces/login.xhtml" icon="pi pi-times" />
+                <p:menuitem value="Ingresar" url="http://localhost:8080/SalesQuest/faces/login.xhtml"/>
 
 
 
@@ -88,7 +93,7 @@ and open the template in the editor.
                 </p:panelGrid>
 
                 <f:facet name="footer">
-                    
+
                 </f:facet>
             </p:carousel>
         </h:form>
@@ -108,7 +113,7 @@ and open the template in the editor.
                 </p:panelGrid>
 
                 <f:facet name="footer">
-                    
+
                 </f:facet>
             </p:carousel>
         </h:form>
@@ -128,7 +133,7 @@ and open the template in the editor.
                 </p:panelGrid>
 
                 <f:facet name="footer">
-                    
+
                 </f:facet>
             </p:carousel>
         </h:form>
@@ -156,12 +161,14 @@ and open the template in the editor.
             </p:tabView>
         </h:form>
         <h:form>
+            <p:growl id="growl" showDetail="true" life="2000" />
             <p:outputPanel deferred="true" deferredMode="visible">
                 <h3>Comparta su opinión:</h3>
-                <p:inputTextarea rows="6" cols="103" />
-                <p></p>
-                <p:commandButton value="Submit" />
-            </p:outputPanel>                        
+                <p:inputTextarea rows="6" cols="103" value="#{contactoController.opinion}" placeholder="Ingrese su opinión"/>
+            </p:outputPanel>
+            <p:outputLabel value="*Puede durar varios segundos en cargar"/>
+                        <p></p>
+            <p:commandButton value="Enviar" action="#{contactoController.enviarOpinion()}" update="@form"/>         
         </h:form>
     </h:body>
 </html> 
