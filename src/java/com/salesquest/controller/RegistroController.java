@@ -10,7 +10,9 @@ import com.salesquest.model.Usuario;
 import com.salesquest.servicio.Servicio_Codigo;
 import com.salesquest.servicio.Servicio_Usuario;
 import com.salesquest.model.Codigo;
+import com.salesquest.model.EstadoCivil;
 import com.salesquest.model.TipoUsuario;
+import com.salesquest.servicio.Servicio_EstadoCivil;
 import com.salesquest.servicio.Servicio_TipoUsuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,8 @@ public class RegistroController {
     private Usuario usuario = new Usuario();
    
     private List<TipoUsuario> listaTipoUsuarios = new ArrayList<TipoUsuario>();
+    
+    
    
     public void linkRegistrar() {
         this.cargarLista();
@@ -71,7 +75,7 @@ public class RegistroController {
             this.listaTipoUsuarios.add((TipoUsuario)obj);
             
         }
-
+     
     }
     
     public Usuario getUsuario() {

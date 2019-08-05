@@ -5,6 +5,8 @@
  */
 package com.salesquest.model;
 
+import java.util.Date;
+
 /**
  *
  * @author Laboratorio
@@ -18,6 +20,12 @@ public class Usuario {
     private String nombreUsuario;
     private String contrasenna;
     private TipoUsuario tipoUsuario;
+    private String direccion;
+    private Date fechaNacimiento;
+    private String telefono;
+    private EstadoCivil estadoCivil;
+    private Categoria categoriaFavorita;
+    
     
     
     public Usuario() {
@@ -33,6 +41,23 @@ public class Usuario {
          this.nombreUsuario = nombreUsuario;
          this.contrasenna = contrasenna;
          this.tipoUsuario = tipoUsuario;
+         
+     }
+    
+    public Usuario(int idUsuario,String nombre,String apellidos,String correo,String nombreUsuario,String contrasenna,TipoUsuario tipoUsuario,String direccion,String telefono,EstadoCivil estadoCivil,Date fechaNacimiento,Categoria categoriaFavorita) {
+           
+         this.idUsuario = idUsuario;
+         this.nombre = nombre;
+         this.apellidos = apellidos;
+         this.correo = correo;
+         this.nombreUsuario = nombreUsuario;
+         this.contrasenna = contrasenna;
+         this.tipoUsuario = tipoUsuario;
+         this.direccion = direccion;
+         this.telefono = telefono;
+         this.estadoCivil = estadoCivil;
+         this.fechaNacimiento = fechaNacimiento;
+         this.categoriaFavorita = categoriaFavorita;
          
      }
     
@@ -102,6 +127,48 @@ public class Usuario {
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public EstadoCivil getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(EstadoCivil estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public Categoria getCategoriaFavorita() {
+        return categoriaFavorita;
+    }
+
+    public void setCategoriaFavorita(Categoria categoriaFavorita) {
+        this.categoriaFavorita = categoriaFavorita;
+    }
+    
+   
     
     
     public String toString(){

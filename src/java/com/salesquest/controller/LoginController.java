@@ -39,9 +39,7 @@ public class LoginController {
     public void ingresoAlSistema(){
         
         Servicio_Usuario su = new Servicio_Usuario();
-        Servicio_TipoUsuario st = new Servicio_TipoUsuario();
-        
-        
+       
         for (Object obj : su.mostrarDatos()) {
             if (((Usuario)obj).getNombreUsuario().equalsIgnoreCase(ingreso) && ((Usuario)obj).getContrasenna().equalsIgnoreCase(contra)) {
                 
@@ -55,11 +53,7 @@ public class LoginController {
             }
         }
         
-//        for (Object o : st.mostrarDatos()) {
-//            if (usuario.getTipoUsuario().getIdTipoUsuario() == ((TipoUsuario)o).getIdTipoUsuario()) {
-//                tU = ((TipoUsuario)o).getNombreTipoUsuario();
-//            }
-//        }
+        
         
         if (usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("oferente")) {
             
@@ -77,6 +71,24 @@ public class LoginController {
                 e.printStackTrace();
             }
             
+//            if (this.usuario.getDireccion().equals()) {
+//                    
+//            try {
+//           
+//            HttpServletRequest request = (HttpServletRequest) FacesContext
+//                    .getCurrentInstance().getExternalContext().getRequest();
+//            FacesContext
+//                    .getCurrentInstance()
+//                    .getExternalContext()
+//                    .redirect(
+//                            request.getContextPath()
+//                            + "/faces/perfil.xhtml?faces-redirect=true");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//                    
+//                }
+            
         }else if(usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("cliente")){
     
             try {
@@ -92,6 +104,26 @@ public class LoginController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+                
+//            if (this.usuario.getDireccion().equalsIgnoreCase("") || this.usuario.getDireccion() == null) {
+//                    
+//            try {
+//           
+//            HttpServletRequest request = (HttpServletRequest) FacesContext
+//                    .getCurrentInstance().getExternalContext().getRequest();
+//            FacesContext
+//                    .getCurrentInstance()
+//                    .getExternalContext()
+//                    .redirect(
+//                            request.getContextPath()
+//                            + "/faces/perfil.xhtml?faces-redirect=true");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//                    
+//                }
+            
+            
             
         }else{
         

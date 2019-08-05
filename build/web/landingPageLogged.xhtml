@@ -61,7 +61,7 @@ and open the template in the editor.
  
         <p:menuitem value="Acerca de nosotros" url="https://www.google.com" icon="pi pi-times" />
  
-        <p:menuitem value="Perfil" url="https://www.google.com" icon="pi pi-times" />
+        <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" icon="pi pi-times" />
  
         <f:facet name="options">
             <h:outputText value="Bienvenido Consumidor" />
