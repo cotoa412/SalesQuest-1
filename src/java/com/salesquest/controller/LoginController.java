@@ -71,23 +71,9 @@ public class LoginController {
                 e.printStackTrace();
             }
             
-//            if (this.usuario.getDireccion().equals()) {
-//                    
-//            try {
-//           
-//            HttpServletRequest request = (HttpServletRequest) FacesContext
-//                    .getCurrentInstance().getExternalContext().getRequest();
-//            FacesContext
-//                    .getCurrentInstance()
-//                    .getExternalContext()
-//                    .redirect(
-//                            request.getContextPath()
-//                            + "/faces/perfil.xhtml?faces-redirect=true");
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//                    
-//                }
+            if (this.usuario.getDireccion() == null) {
+                    this.redireccionarAlPerfil();
+            }
             
         }else if(usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("cliente")){
     
@@ -105,23 +91,11 @@ public class LoginController {
                 e.printStackTrace();
             }
                 
-//            if (this.usuario.getDireccion().equalsIgnoreCase("") || this.usuario.getDireccion() == null) {
-//                    
-//            try {
-//           
-//            HttpServletRequest request = (HttpServletRequest) FacesContext
-//                    .getCurrentInstance().getExternalContext().getRequest();
-//            FacesContext
-//                    .getCurrentInstance()
-//                    .getExternalContext()
-//                    .redirect(
-//                            request.getContextPath()
-//                            + "/faces/perfil.xhtml?faces-redirect=true");
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//                    
-//                }
+            if (this.usuario.getDireccion() == null) {
+                
+                this.redireccionarAlPerfil();
+                    
+              }
             
             
             
@@ -130,6 +104,27 @@ public class LoginController {
         }
         
     }
+    
+    public void redireccionarAlPerfil(){
+            
+            try {
+           
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "./faces/perfil.xhtml?faces-redirect=true");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+                    
+    }
+    
+    
+    
     
     public void logout() {
 
