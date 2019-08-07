@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <style>
+            body { 
+                background-color: #ccccff;
+            }
+        </style> 
+        <title>Registro</title>
+        <meta name="google-signin-scope" content="profile email"/>
+        <meta name="google-signin-client_id" content="607198644487-52v06mono4as484c1j4mobsm7cco029b.apps.googleusercontent.com"/>
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <script async="async" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v3.3&amp;appId=1937321129700921&amp;autoLogAppEvents=1">;</script>
+
+    </h:head>
+    <h:body>
+
+        <p:panel id="basic" header="Contactenos"  style="margin-bottom:20px;text-align: center; width: 700px; margin: 0 auto;">
+
+            <p:panel style="font-size: 20px;text-align: center;width: 650px;margin: 0 auto;">
+
+                <p:messages showDetail="true"/>
+
+                <h:form id="for" style="display: flex;">
+                    <p:growl id="growl" showDetail="true" life="2000" />
+                    <p:panelGrid columns="1" 
+                                 style="width: 620px;
+                                 text-align: center;">
+
+                        <p:outputLabel value="Nombre:" />
+                        <p:inputText id="nombre" value="#{contactoController.nombre}" style="width: 200px;"/>
+
+                        <p:outputLabel value="Correo:"/>
+                        <p:inputText id="correo" value="#{contactoController.correo}" style="width: 300px;"/>
+
+                        <p:outputLabel value="Que desea comunicar a SaleQuest?:" />
+                        <p:inputTextarea id="queja" value="#{contactoController.queja}" rows="6" cols="30" placeholder="Digite aqui"/>
+
+                        <p:commandButton value="Enviar" update="@form" action="#{contactoController.enviarQueja()}" />
+                        <p:outputLabel value="*Puede durar varios segundos en cargar"/>
+                        <h:outputLabel/>
+                        <p:commandButton  value="Atrás" action="landingPage.xhtml" update="@form"/>
+
+
+
+
+                    </p:panelGrid>
+
+                </h:form>
+
+            </p:panel>
+        </p:panel> 
+    </h:body>
+</html>

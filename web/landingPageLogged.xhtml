@@ -6,14 +6,14 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:form> 
-    <h:head>
-        <title>SalesQuest</title>
-    <style>
+        <h:head>
+            <title>SalesQuest</title>
+            <style>
                 .fa {
                     padding: 20px;
                     font-size: 30px;
@@ -38,105 +38,105 @@ and open the template in the editor.
                 body { 
                     background-color: #ccccff;
                 }
-    </style>       
-    <style>
-    body { 
-    background-color: #ccccff;
-    }
-    </style> 
- 
-    </h:head>
- </h:form>
+            </style>       
+            <style>
+                body { 
+                    background-color: #ccccff;
+                }
+            </style> 
+
+        </h:head>
+    </h:form>
     <h:body>
-        
+
         <p:graphicImage value="../Images/logo.png" height="100" width="150"/>
         <h:link outcome="landingPageOferente">Consumidor</h:link>
-    <h:form>  
-    <p:growl id="messages"/>
- 
-    <p:menubar>
-        
-        <p:menuitem value="Home" url="https://www.google.com" icon="pi pi-times" />
- 
- 
-        <p:menuitem value="Acerca de nosotros" url="https://www.google.com" icon="pi pi-times" />
- 
-        <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" icon="pi pi-times" />
- 
-        <f:facet name="options">
-            <h:outputText value="Bienvenido Consumidor" />
-            <h:outputText value="      " />
-            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-            <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}" icon="pi pi-home"  />
-        </f:facet>
-    </p:menubar>
-</h:form>
-      
-   
-        
-        
+        <h:form>  
+            <p:growl id="messages"/>
+
+            <p:menubar>
+
+                <p:menuitem value="Home" url="https://www.google.com"/>
+
+
+                <p:menuitem value="Contactenos" url="http://localhost:8080/SalesQuest/faces/Contacto.xhtml"/> 
+
+                <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
+
+                <f:facet name="options">
+                    <h:outputText value="Bienvenido Consumidor" />
+                    <h:outputText value="      " />
+                    <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
+                    <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}"  />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+
+
+
         <h:form id="form10">
             <p:carousel value="aaaa" headerText="Reciente" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
                 <p:graphicImage value="../Images/download.jpg" height="120" width="150" />
-        
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-            <f:facet name="header">
-            </f:facet>
- 
-            
- 
-            <h:outputText value="Link:" />
-            <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
- 
-            
-        </p:panelGrid>
- 
-        <f:facet name="footer">
-                
-        </f:facet>
-    </p:carousel>
- </h:form>
+
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                    </f:facet>
+
+
+
+                    <h:outputText value="Link:" />
+                    <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
+
+
+                </p:panelGrid>
+
+                <f:facet name="footer">
+
+                </f:facet>
+            </p:carousel>
+        </h:form>
         <h:form id="form20">
             <p:carousel value="aaaa" headerText="Destacado" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
                 <p:graphicImage value="../Images/PikachuAlola..PNG" height="150" width="150" />
-        
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-            <f:facet name="header">
-            </f:facet>
- 
-            
- 
-            <h:outputText value="Link:" />
-            <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
-            
-        </p:panelGrid>
- 
-        <f:facet name="footer">
-                
-        </f:facet>
-    </p:carousel>
- </h:form>
+
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                    </f:facet>
+
+
+
+                    <h:outputText value="Link:" />
+                    <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
+
+                </p:panelGrid>
+
+                <f:facet name="footer">
+
+                </f:facet>
+            </p:carousel>
+        </h:form>
         <h:form id="form30">
             <p:carousel value="aaaa" headerText="Trending" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
                 <p:graphicImage value="../Images/Capture11.PNG" height="130" width="150" />
-        
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-            <f:facet name="header">
-              
-            </f:facet>
- 
-            
- 
-            <h:outputText value="Link:" />
-            <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
-            
-        </p:panelGrid>
- 
-        <f:facet name="footer">
-                
-        </f:facet>
-    </p:carousel>
- </h:form>
+
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+
+                    </f:facet>
+
+
+
+                    <h:outputText value="Link:" />
+                    <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
+
+                </p:panelGrid>
+
+                <f:facet name="footer">
+
+                </f:facet>
+            </p:carousel>
+        </h:form>
         <h:form id="form">
 
             <p:growl id="msgs" showDetail="true" />
@@ -144,7 +144,7 @@ and open the template in the editor.
             <p:tabView dynamic="true" cache="true" effect="fold">
                 <p:tab title="Acerca de Nosotros:">
                     <h:panelGrid columns="2" cellpadding="10">
-                        <p:graphicImage value="../Images/logo.png" height="200" />
+                        <p:graphicImage value="Images/logo.png" height="200" />
                         <h:outputText
                             value="SaleQuest busca brindar una herramienta para compradores y vendedores donde puedan convivir con los diferentes productos que nuestra página ofrece gracias a nuestros oferentes. SaleQuest proporciona facilidad a la hora de buscar que comprar y en donde en poco tiempo." />
                     </h:panelGrid>
@@ -160,12 +160,14 @@ and open the template in the editor.
             </p:tabView>
         </h:form>
         <h:form>
+            <p:growl id="growl" showDetail="true" life="2000" />
             <p:outputPanel deferred="true" deferredMode="visible">
                 <h3>Comparta su opinión:</h3>
-                <p:inputTextarea rows="6" cols="103" />
-                <p></p>
-                <p:commandButton value="Submit" />
-            </p:outputPanel>                        
+                <p:inputTextarea rows="6" cols="103" value="#{contactoController.opinion}" placeholder="Ingrese su opinión"/>
+            </p:outputPanel>
+            <p:outputLabel value="*Puede durar varios segundos en cargar"/>
+                        <p></p>
+            <p:commandButton value="Enviar" action="#{contactoController.enviarOpinion()}" update="@form"/>                     
         </h:form>
     </h:body>
 </html> 

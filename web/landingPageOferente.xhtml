@@ -46,26 +46,26 @@ and open the template in the editor.
     <h:body>
         <p:graphicImage value="../Images/logo.png" height="100" width="150"/> 
         <h:link outcome="landingPageLogged">Oferente</h:link>
-        
+
         <h:form>  
             <p:growl id="messages"/>
 
             <p:menubar>
-                
-            <p:menuitem value="Home" url="https://www.google.com" icon="pi pi-times" />
 
-            <p:menuitem value="Acerca de nosotros" url="https://www.google.com" icon="pi pi-times" />
- 
-            <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" icon="pi pi-times" />
+                <p:menuitem value="Home" url="https://www.google.com" />
 
-            <p:menuitem value="Agregar Promocion" url="https://www.google.com" icon="pi pi-times" />
+                <p:menuitem value="Contactenos" url="http://localhost:8080/SalesQuest/faces/Contacto.xhtml"/>
+
+                <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
+
+                <p:menuitem value="Agregar Promocion" url="https://www.google.com" />
 
                 <f:facet name="options">
-                    
+
                     <h:outputText value="Bienvenido Oferente" />
                     <h:outputText value="      " />
                     <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-                    <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}" icon="pi pi-home"  />
+                    <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}"   />
                 </f:facet>
             </p:menubar>
         </h:form>
@@ -87,7 +87,7 @@ and open the template in the editor.
                 </p:panelGrid>
 
                 <f:facet name="footer">
-                    
+
                 </f:facet>
             </p:carousel>
         </h:form>
@@ -107,7 +107,7 @@ and open the template in the editor.
                 </p:panelGrid>
 
                 <f:facet name="footer">
-                    
+
                 </f:facet>
             </p:carousel>
         </h:form>
@@ -127,7 +127,7 @@ and open the template in the editor.
                 </p:panelGrid>
 
                 <f:facet name="footer">
-                    
+
                 </f:facet>
             </p:carousel>
         </h:form>
@@ -138,7 +138,7 @@ and open the template in the editor.
             <p:tabView dynamic="true" cache="true" effect="fold">
                 <p:tab title="Acerca de Nosotros:">
                     <h:panelGrid columns="2" cellpadding="10">
-                        <p:graphicImage value="../Images/logo.png" height="200" />
+                        <p:graphicImage value="Images/logo.png" height="200" />
                         <h:outputText
                             value="SaleQuest busca brindar una herramienta para compradores y vendedores donde puedan convivir con los diferentes productos que nuestra página ofrece gracias a nuestros oferentes. SaleQuest proporciona facilidad a la hora de buscar que comprar y en donde en poco tiempo." />
                     </h:panelGrid>
@@ -154,12 +154,14 @@ and open the template in the editor.
             </p:tabView>
         </h:form>
         <h:form>
+            <p:growl id="growl" showDetail="true" life="2000" />
             <p:outputPanel deferred="true" deferredMode="visible">
                 <h3>Comparta su opinión:</h3>
-                <p:inputTextarea rows="6" cols="103" />
-                <p></p>
-                <p:commandButton value="Submit" />
-            </p:outputPanel>                        
+                <p:inputTextarea rows="6" cols="103" value="#{contactoController.opinion}" placeholder="Ingrese su opinión"/>
+            </p:outputPanel>
+            <p:outputLabel value="*Puede durar varios segundos en cargar"/>
+            <p></p>
+            <p:commandButton value="Enviar" action="#{contactoController.enviarOpinion()}" update="@form"/>                         
         </h:form>
     </h:body>
 </html> 
