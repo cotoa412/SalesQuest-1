@@ -58,11 +58,11 @@ and open the template in the editor.
             <p:menubar>
                 <p:menuitem value="Promociones" url="https://www.google.com"/>
 
-                <p:menuitem value="Contactenos" url="http://localhost:8080/SalesQuest/faces/Contacto.xhtml"/> 
+                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/> 
 
                 <p:menuitem value="Registrar" actionListener="#{registroController.linkRegistrar()}"/>
 
-                <p:menuitem value="Ingresar" url="http://localhost:8080/SalesQuest/faces/login.xhtml"/>
+                <p:menuitem value="Ingresar"  actionListener="#{loginController.redireccionar()}"/>
 
 
 

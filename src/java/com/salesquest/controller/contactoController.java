@@ -16,6 +16,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -142,5 +143,23 @@ public class contactoController {
     }
     public void borrarOpinion(){
         setOpinion("");
+    }
+    public void redireccionar(){
+    
+     try {
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .invalidateSession();
+
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/Contacto.xhtml?faces-redirect=true");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }    
 }

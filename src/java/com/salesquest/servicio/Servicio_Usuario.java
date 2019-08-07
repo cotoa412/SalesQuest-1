@@ -128,29 +128,7 @@ public class Servicio_Usuario extends Servicio implements IDAO{
     }
 
     @Override
-    public void actualizarDato(Object obj) {
-       Statement stmt = null;
-       try{
-           this.conectar();//Me conecto a la base de datos.
-           
-           
-           stmt = conn.createStatement();
-           String sql = "UPDATE 'usuario' SET (contrasenna) = ('"+((Usuario)obj).getContrasenna()+"') WHERE idUsuario = ('"+((Usuario)obj).getIdUsuario()+"')";                                                                                                            
-           int i = stmt.executeUpdate(sql);
-           
-       }catch(Exception e){
-         e.printStackTrace();
-       }
-       finally{
-           
-       }
-       try{
-           stmt.close();
-           
-           this.desconectar();//Me desconecto.
-       }catch (Exception e){
-           e.printStackTrace();
-       }   
+    public void actualizarDato(Object obj) { 
     }
 
     @Override
@@ -183,5 +161,28 @@ public class Servicio_Usuario extends Servicio implements IDAO{
            e.printStackTrace();
        }
     }
-
+    public void actualizarContra (Object obj){
+       Statement stmt = null;
+       try{
+           this.conectar();//Me conecto a la base de datos.
+           
+           
+           stmt = conn.createStatement();
+           String sql = "UPDATE usuario SET contrasenna='"+((Usuario)obj).getContrasenna()+"' WHERE idUsuario = ('"+((Usuario)obj).getIdUsuario()+"')";                                                                                                            
+           int i = stmt.executeUpdate(sql);
+           
+       }catch(Exception e){
+         e.printStackTrace();
+       }
+       finally{
+           
+       }
+       try{
+           stmt.close();
+           
+           this.desconectar();//Me desconecto.
+       }catch (Exception e){
+           e.printStackTrace();
+       }      
+    }
 }

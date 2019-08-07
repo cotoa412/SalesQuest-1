@@ -178,6 +178,24 @@ public class LoginController {
         this.usuario = usuario;
     }
     
+    public void redireccionar(){
+    
+     try {
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .invalidateSession();
+
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/login.xhtml?faces-redirect=true");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 
 }

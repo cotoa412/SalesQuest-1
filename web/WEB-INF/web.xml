@@ -7,11 +7,11 @@
     </context-param>
     <context-param>
     <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
-    <param-value>6LeiJq0UAAAAAFGyPbV6uuK9e2bETgTqD_YycetY</param-value>
+    <param-value>6LdM67EUAAAAAHERcKCnHFJ7Zpd36FTKYXsZGDwG</param-value>
 </context-param>
     <context-param>
     <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
-    <param-value>6LeiJq0UAAAAALdVlX4he1nP0lajJrnVS0n7WAqn</param-value>
+    <param-value>6LdM67EUAAAAAH3zziY4s7AK3kCYkjRuOTcoDQmh</param-value>
    </context-param>
     
    

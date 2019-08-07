@@ -56,10 +56,7 @@ and open the template in the editor.
 
             <p:menubar>
 
-                <p:menuitem value="Home" url="https://www.google.com"/>
-
-
-                <p:menuitem value="Contactenos" url="http://localhost:8080/SalesQuest/faces/Contacto.xhtml"/> 
+                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/> 
 
                 <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
 
