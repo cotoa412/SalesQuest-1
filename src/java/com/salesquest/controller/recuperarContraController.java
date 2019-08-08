@@ -34,7 +34,6 @@ public class recuperarContraController {
     private String correo;
     private String codigo;
     private String nuevaContrasenna;
-    private String tempContrasenna; //variable temporal para comparar, la borro limpio despues de
 
     public recuperarContraController() {
 
@@ -70,14 +69,6 @@ public class recuperarContraController {
 
     public void setNuevaContrasenna(String nuevaContrasenna) {
         this.nuevaContrasenna = nuevaContrasenna;
-    }
-
-    public String getTempContrasenna() {
-        return tempContrasenna;
-    }
-
-    public void setTempContrasenna(String tempContrasenna) {
-        this.tempContrasenna = tempContrasenna;
     }
 
     public void recuperarContrasenna() {
@@ -133,8 +124,7 @@ public class recuperarContraController {
             }
 
         }
-
-        correo = null;
+ 
     }
 
     public String confirmarCodigo() {
@@ -162,14 +152,12 @@ public class recuperarContraController {
 
     public void verificarNuevaContra() {//limpiar la variable de tempcontra al terminar (memoria)
         Servicio_Usuario s = new Servicio_Usuario();
-        Usuario u = new Usuario();
+        Usuario u;
         for (Object obj : s.mostrarDatos()) {//recorrer mostrarDatos         
-            if (this.nuevaContrasenna == this.tempContrasenna && this.nuevaContrasenna != "" && this.tempContrasenna != "") {//algunas condiciones 
-
-                if (((Usuario) obj).getContrasenna() != this.nuevaContrasenna) {//si la nueva contra es diferente a la vieja entonces que la actualize
+            if (this.usuario.getCorreo().equalsIgnoreCase(correo)) {//algunas condiciones 
                     u = ((Usuario) obj);
-                    ((Usuario) obj).setContrasenna(tempContrasenna);//hace que la contrasena del usuario sea igual a tempcoontrasena
-                    s.actualizarDato(u);//llama al update                    
+                    ((Usuario) obj).setContrasenna(nuevaContrasenna);//hace que la contrasena del usuario sea igual a tempcoontrasena
+                    s.actualizarContra(u);//llama al update                    
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Se ha actualizado su contraseña!"));
                     try {
                         HttpServletRequest request = (HttpServletRequest) FacesContext
@@ -179,19 +167,13 @@ public class recuperarContraController {
                                 .getExternalContext()
                                 .redirect(
                                         request.getContextPath()
-                                        + "/index.xhtml?faces-redirect=true");//hay que cambiar porque el index no va a ser el login.
+                                        + "/faces/login.xhtml?faces-redirect=true");//hay que cambiar porque el index no va a ser el login.
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }
+                
             } else if (((Usuario) obj).getContrasenna() == this.nuevaContrasenna) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Su contraseña no puede ser la misma que la antigua!"));
-            } else if (this.nuevaContrasenna != this.tempContrasenna) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "La contraseña ingresada no fue repetida correctamente!"));
-            } else if (this.nuevaContrasenna == "") {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Por favor llenar los espacios!"));
-            } else if (this.tempContrasenna == "") {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Por favor llenar los espacios!"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Algo salio mal! Por favor reintentar."));
             }

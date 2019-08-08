@@ -174,6 +174,6 @@ public class Usuario {
     public String toString(){
     
     
-            return this.getNombre() + " " + this.getCorreo();
+            return this.getNombre() + " " + this.getContrasenna() + " " + this.getCorreo();
     }
 }

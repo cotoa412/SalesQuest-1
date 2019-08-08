@@ -32,11 +32,11 @@ and open the template in the editor.
                 <h:outputLabel value=""/>
                 <h:outputLabel value=""/>
                 
-                <h:outputLabel value="Nueva Contraseña:"/>
-                <p:password value="#{recuperarContraController.nuevaContrasenna}" /> <!--  progamar -->
-                
-                <h:outputLabel value="Repetir Contraseña:"/>
-                <p:password value="#{recuperarContraController.tempContrasenna}" /> <!--  progamar  -->
+                <p:outputLabel value="Nueva Contraseña:"/>
+                <p:password value="#{recuperarContraController.nuevaContrasenna}" match="clave2" style="width: 400px;"/>
+            
+                <p:outputLabel value="Confirmar contraseña:"/>
+                <p:password id="clave2" style="width: 400px;"/>
                 
                 
             </h:panelGrid>
