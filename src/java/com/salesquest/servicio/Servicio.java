@@ -15,10 +15,10 @@ import java.sql.DriverManager;
 public abstract class Servicio {
 
     protected static String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    protected static String DB_URL = "jdbc:mysql://localhost:3306/salesquest"+"?useTimezone=true&serverTimezone=UTC";
+    protected static String DB_URL = "jdbc:mysql://mysql3000.mochahost.com/guayabas_salesquest"+"?useTimezone=true&serverTimezone=UTC";
     
-    protected static String USER = "root";
-    protected static String PASS = "123456";
+    protected static String USER = "guayabas_sq";
+    protected static String PASS = "salesquest123";
     
     protected static Connection conn =  null;
     

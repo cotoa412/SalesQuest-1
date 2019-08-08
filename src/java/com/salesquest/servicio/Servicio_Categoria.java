@@ -70,7 +70,7 @@ public class Servicio_Categoria extends Servicio implements IDAO {
             this.conectar();
             stmt = conn.createStatement();
             
-            String sql = "Insert Into Categoria(nombreCategoria) Values('"+ ((Categoria)obj).getNombreCategoria() +"')";
+            String sql = "Insert Into categoria(nombreCategoria) Values('"+ ((Categoria)obj).getNombreCategoria() +"')";
         
             int insert = stmt.executeUpdate(sql);
             
