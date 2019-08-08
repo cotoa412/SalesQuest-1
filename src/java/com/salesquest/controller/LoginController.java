@@ -27,8 +27,7 @@ public class LoginController {
     //private String tU;
     private String ingreso;
     private String contra;
-    private String mensaje;
-    
+    private String mensaje; 
     private Usuario usuario = new Usuario();
 
     public LoginController() {
@@ -55,8 +54,9 @@ public class LoginController {
         
         
         
-        if (usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("oferente")) {
-            
+        if (usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("oferente")) {   
+            PromoController pr = new PromoController();
+            pr.cargarListaCategorias();
             try {
            
             HttpServletRequest request = (HttpServletRequest) FacesContext
@@ -75,7 +75,7 @@ public class LoginController {
                     this.redireccionarAlPerfil();
             }
             
-        }else if(usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("cliente")){
+        }else if(usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("consumidor")){
     
             try {
            

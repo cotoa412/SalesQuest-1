@@ -45,22 +45,55 @@ and open the template in the editor.
 
     <h:body>
         <p:graphicImage value="../Images/logo.png" height="100" width="150"/> 
-        <h:link outcome="landingPageLogged">Oferente</h:link>
-
+ 
         <h:form>  
+            
             <p:growl id="messages"/>
+        
+            <p:dialog header="Agregar Promocion" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="310">
+                
+             <p:panel style="font-size: 20px;text-align: center;width: 700px;margin: 0 auto;">
+                 
+            <h:form>
+            <p:growl id="growl" showDetail="true" life="2000" />  
+            <p:panelGrid columns="1" style="width: 650px;">
+                 
+                <p:outputLabel value="Link de promoción."/>
+                <p:inputText value="#{promoController.promocion.linkPromo}" style=" width: 300px;"/>
+                <p:outputLabel value="Nombre de la promocion"/>
+                <p:inputText value="#{promoController.promocion.nombrePromo}" style=" width: 300px;"/>
+                
+                <p:outputLabel value="Categoria."/>
+                
+                <p:selectOneMenu id="categoria" value="#{promoController.promocion.categoria}" 
+                                style="min-width:150px; width:300px;" converter="categoriaConverter">                                    
+                    <f:selectItems value="#{promoController.listaCategorias}" var="categoria" 
+                                   itemLabel="#{categoria.nombreCategoria}" itemValue="#{categoria}" />
+                </p:selectOneMenu>
+                
+                <h:outputLabel value=""/>
+            
+                
+            </p:panelGrid>
+           <p:commandButton value="Añadir Promoción" action="olvidoContraInsertar" actionListener="#{recuperarContraController.recuperarContrasenna()}" update="@form"/>
+                                     
+        </h:form>
 
+        </p:panel>
+               
+            </p:dialog>
+            
             <p:menubar>
 
                 <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/>
 
                 <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
 
-                <p:menuitem value="Agregar Promocion" url="https://www.google.com" />
+                <p:menuitem value="Agregar Promocion" onclick="PF('dlg3').show();" />
 
                 <f:facet name="options">
 
-                    <h:outputText value="Bienvenido Oferente" />
+                    <h:outputText value="Bienvenido #{perfilController.perfil.usuario.nombre}" />
                     <h:outputText value="      " />
                     <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
                     <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}"   />

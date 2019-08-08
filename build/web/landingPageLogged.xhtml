@@ -50,7 +50,6 @@ and open the template in the editor.
     <h:body>
 
         <p:graphicImage value="../Images/logo.png" height="100" width="150"/>
-        <h:link outcome="landingPageOferente">Consumidor</h:link>
         <h:form>  
             <p:growl id="messages"/>
 
@@ -61,7 +60,7 @@ and open the template in the editor.
                 <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
 
                 <f:facet name="options">
-                    <h:outputText value="Bienvenido Consumidor" />
+                    <h:outputText value="Bienvenido #{perfilController.perfil.usuario.nombre}" />
                     <h:outputText value="      " />
                     <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
                     <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}"  />
