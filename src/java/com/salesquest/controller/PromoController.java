@@ -15,7 +15,7 @@ import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author Personal
+ * @author Kainthel
  */
 @ManagedBean(name = "promoController")
 @SessionScoped

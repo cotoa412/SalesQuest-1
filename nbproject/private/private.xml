@@ -28,6 +28,7 @@
         </group>
         <group>
             <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/web/landingPage.xhtml</file>
+            <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/src/java/com/salesquest/servicio/Servicio_Promocion.java</file>
             <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/web/landingPageOferente.xhtml</file>
             <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/web/landingPageLogged.xhtml</file>
             <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/src/java/com/salesquest/controller/PromoController.java</file>

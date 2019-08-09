@@ -9,7 +9,7 @@ import com.salesquest.model.Categoria;
 
 /**
  *
- * @author Personal
+ * @author Kainthel
  */
 public class Promocion {
     
@@ -26,6 +26,12 @@ public class Promocion {
         this.categoria = categoria;
     }
 
+    public Promocion(int idPromocion, String linkPromo, String nombrePromo) {
+        this.idPromocion = idPromocion;
+        this.linkPromo = linkPromo;
+        this.nombrePromo = nombrePromo;
+    }
+    
     public Promocion(int idPromocion, String linkPromo, String nombrePromo, Categoria categoria) {
         this.idPromocion = idPromocion;
         this.linkPromo = linkPromo;

@@ -5,7 +5,7 @@
  */
 package com.salesquest.servicio;
 
-import com.salesquest.model.TipoUsuario;
+import com.salesquest.model.Promocion;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -31,7 +31,8 @@ public class Servicio_Promocion extends Servicio implements IDAO{
            while(rs.next()){
                int idPromocion = rs.getInt("idPromocion");
                String nombrePromo = rs.getString("nombrePromo");
-               listaPromos.add(new TipoUsuario(idPromocion,nombrePromo));
+               String linkPromo = rs.getString("nombrePromo");
+               listaPromos.add(new Promocion(idPromocion,linkPromo,nombrePromo));
            }
         }catch(Exception e){
             e.printStackTrace();
