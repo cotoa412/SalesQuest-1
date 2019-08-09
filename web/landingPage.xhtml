@@ -73,9 +73,6 @@ and open the template in the editor.
 
                 <p:menuitem value="Ingresar"  actionListener="#{loginController.redireccionar()}"/>
 
-
-
-
                 <f:facet name="options">
                     <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
 
@@ -97,6 +94,9 @@ and open the template in the editor.
  
                 <h:outputText value="Link:" />
                 <a href="#{promocion.linkPromo}">Ver Promo</a>
+                <f:facet name="footer">
+                        
+                </f:facet>
  
             </p:panelGrid>
         </p:carousel>

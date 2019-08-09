@@ -27,9 +27,19 @@
             <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/UsuarioConverter.java</file>
         </group>
         <group>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/web/agregarPromo.xhtml</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/perfilController.java</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/servicio/Servicio_Promocion.java</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/RegistroConverter.java</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/model/Promocion.java</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/web/landingPageLogged.xhtml</file>
             <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/web/landingPage.xhtml</file>
             <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/PromoController.java</file>
-            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/servicio/Servicio_Promocion.java</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/web/login.xhtml</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/LoginController.java</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/RegistroController.java</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/web/landingPageOferente.xhtml</file>
+            <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/servicio/Servicio_Usuario.java</file>
         </group>
     </open-files>
 </project-private>

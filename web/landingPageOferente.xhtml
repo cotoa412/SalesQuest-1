@@ -61,7 +61,7 @@ and open the template in the editor.
             
             <p:dialog header="Agregar Promoción" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="300">
                 <iframe frameborder="0" align="left"
-                src="http://localhost:8080/SalesQuest/faces/agregarPromo.xhtml"
+                src="https://salesquest.website/faces/agregarPromo.xhtml?faces-redirect=true"
                 name="someName" id="someId" scrolling="auto" width="750"
                 height="500" marginheight="5" marginwidth="10" >
                 </iframe>
@@ -100,6 +100,10 @@ and open the template in the editor.
  
                 <h:outputText value="Link:" />
                 <a href="#{promocion.linkPromo}">Ver Promo</a>
+                
+                <f:facet name="footer">
+                        
+                </f:facet>
  
             </p:panelGrid>
         </p:carousel>
