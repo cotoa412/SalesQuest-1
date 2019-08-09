@@ -17,7 +17,6 @@ public class Promocion {
     private String linkPromo;
     private String nombrePromo;
     private Categoria categoria;
-
     public Promocion() {
     }
 

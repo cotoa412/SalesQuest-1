@@ -27,26 +27,12 @@
             <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/UsuarioConverter.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/web/olvidoContraInsertar.xhtml</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/servicio/Servicio_Codigo.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/model/Usuario.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/web/olvidoContra.xhtml</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/servicio/Servicio.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/controller/UsuarioConverter.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/servicio/Servicio_Usuario.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/controller/contactoController.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/web/perfil.xhtml</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/controller/recuperarContraController.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/model/EstadoCivil.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/controller/RegistroController.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/web/OlvidoContraCambiar.xhtml</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/web/landingPage.xhtml</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/controller/PerfilController.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/web/registro.xhtml</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/servicio/IDAO.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/web/landingPageLogged.xhtml</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/src/java/com/salesquest/controller/LoginController.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/SalesQuest/web/login.xhtml</file>
+            <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/web/landingPage.xhtml</file>
+            <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/web/landingPageOferente.xhtml</file>
+            <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/web/landingPageLogged.xhtml</file>
+            <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/src/java/com/salesquest/controller/PromoController.java</file>
+            <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/web/WEB-INF/web.xml</file>
+            <file>file:/D:/SalesQuest-master%20(5)/SalesQuest-master/src/java/com/salesquest/model/Promocion.java</file>
         </group>
     </open-files>
 </project-private>

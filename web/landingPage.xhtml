@@ -76,18 +76,17 @@ and open the template in the editor.
 
 
 
-        <h:form id="form1">
-            <p:carousel value="aaaa" headerText="Reciente" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
-                <p:graphicImage value="Images/download.jpg" height="120" width="150" />
-
-                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+        <h:form id="recienteGuest">
+            <p:carousel value="#{promoController.promocion}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
+                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
                     </f:facet>
 
 
 
-                    <h:outputText value="Link:" />
-                    <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
+            <h:outputText value= "#{promocion.nombrePromo}" />
+            <a href="#{promocion.linkPromo}">Link</a>
 
 
                 </p:panelGrid>
@@ -97,18 +96,17 @@ and open the template in the editor.
                 </f:facet>
             </p:carousel>
         </h:form>
-        <h:form id="form2">
-            <p:carousel value="aaaa" headerText="Destacado" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
-                <p:graphicImage value="Images/PikachuAlola..PNG" height="150" width="150" />
-
-                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+         <h:form id="destacadoGuest">
+            <p:carousel value="#{promoController.promocion}" headerText="Destacado" var="promocion" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
+                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
                     </f:facet>
 
 
 
-                    <h:outputText value="Link:" />
-                    <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
+            <h:outputText value= "#{promocion.nombrePromo}" />
+                    <a href="#{promocion.linkPromo}">Link</a>
 
                 </p:panelGrid>
 
@@ -117,19 +115,17 @@ and open the template in the editor.
                 </f:facet>
             </p:carousel>
         </h:form>
-        <h:form id="form3">
-            <p:carousel value="aaaa" headerText="Trending" var="recent" itemStyle="text-align:center" responsive="true" numVisible="5">
-                <p:graphicImage value="Images/Capture11.PNG" height="130" width="150" />
-
-                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+        <h:form id="trendingGuest">
+            <p:carousel value="#{promoController.promocion}" headerText="Trending" var="promocion" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
+                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
                     </f:facet>
 
 
 
-                    <h:outputText value="Link:" />
-                    <a href="https://www.youtube.com/watch?v=oHg5SJYRHA0">Link</a>
-
+            <h:outputText value= "#{promocion.nombrePromo}" />
+                    <a href="#{promocion.linkPromo}">Link</a>
                 </p:panelGrid>
 
                 <f:facet name="footer">
