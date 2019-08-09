@@ -72,6 +72,8 @@ public class Categoria {
         return true;
     }
     
-    
+    public String toString(){
+        return getNombreCategoria();
+    }
     
 }

@@ -40,6 +40,15 @@ and open the template in the editor.
                     background-color: #ccccff;
                 }
             </style> 
+            <style type="text/css">
+                .ui-outputlabel {
+                    font-weight: bold;
+                }
+
+                .ui-orderlist .ui-orderlist-list {
+                    height: auto;
+                }
+            </style>             
         </h:head>
     </h:form>
     
@@ -77,63 +86,24 @@ and open the template in the editor.
  
         </h:form>
 
-        <h:form id="recienteOferente">
-        
-            <p:carousel value="#{promoController.listaPromociones}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true">
+        <p:carousel value="#{promoController.listaPromociones}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-                    
                 <f:facet name="header">
-                    <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
+                        <img src="Images/promocion.jpg" width="150" height="150" alt="promo"></img>
                 </f:facet>
+ 
+                <h:outputText value="Nombre:" />
+                <h:outputText value="#{promocion.nombrePromo}" />
                 
-                <h:outputText value= "#{promocion.nombrePromo}" />
-                <a target="_blank" href="#{promocion.linkPromo}">Ir a promo</a>   
-                </p:panelGrid>
-
-                <f:facet name="footer">
-
-                </f:facet>
+                <h:outputText value="Categoria:" />
+                <h:outputText value="#{promocion.categoria}" />
+ 
+                <h:outputText value="Link:" />
+                <a href="#{promocion.linkPromo}">Ver Promo</a>
+ 
+            </p:panelGrid>
         </p:carousel>
-        </h:form>
-         <h:form id="destacadoOferente">
-            <p:carousel value="#{promoController.promocion}" headerText="Destacado" var="promocion" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-                    <f:facet name="header">
-                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
-                    </f:facet>
-
-
-
-            <h:outputText value= "#{promocion.nombrePromo}" />
-                    <a href="#{promocion.linkPromo}">Link</a>
-
-                </p:panelGrid>
-
-                <f:facet name="footer">
-
-                </f:facet>
-            </p:carousel>
-        </h:form>
-        <h:form id="trendingOferente">
-            <p:carousel value="#{promoController.promocion}" headerText="Trending" var="promocion" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-                    <f:facet name="header">
-                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
-                    </f:facet>
-
-
-
-            <h:outputText value= "#{promocion.nombrePromo}" />
-                    <a href="#{promocion.linkPromo}">Link</a>
-
-
-                </p:panelGrid>
-
-                <f:facet name="footer">
-
-                </f:facet>
-            </p:carousel>
-        </h:form>
+      
         <h:form id="form">
 
             <p:growl id="msgs" showDetail="true" />
