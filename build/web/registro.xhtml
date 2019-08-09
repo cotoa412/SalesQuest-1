@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <style>
+    body { 
+    background-color: #ccccff;
+    }
+    </style> 
+        <title>Registro</title>
+        <meta name="google-signin-scope" content="profile email"/>
+        <meta name="google-signin-client_id" content="433078179733-jsacugdqinuj37cnvk837e3986pt1rpf.apps.googleusercontent.com"/>
+        <script src="https://apis.google.com/js/platform.js"></script>
+        <script async="async" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v3.3&amp;appId=1937321129700921&amp;autoLogAppEvents=1">;</script>
+        
+    </h:head>
+    <h:body>
+        
+        <p:panel id="basic" header="Registrar"  style="margin-bottom:20px;text-align: center; width: 700px; margin: 0 auto;">
+        
+        <p:panel style="font-size: 20px;text-align: center;width: 640px;margin: 0 auto;">
+            
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            
+            <p:messages showDetail="true"/>
+            
+            <h:form id="for" style="display: flex;">
+                
+                <p:panelGrid columns="2" 
+                             style="width: 600px;">
+            
+                <p:outputLabel value="Nombre:" />
+                <p:inputText id="nombre" value="#{registroController.usuario.nombre}" style="width: 400px;"/>
+            
+                <p:outputLabel value="Apellidos:"/>
+                <p:inputText id="apellidos" value="#{registroController.usuario.apellidos}" style="width: 400px;"/>
+            
+                <p:outputLabel value="Correo:"/>
+                <p:inputText id="correo" value="#{registroController.usuario.correo}" disabled="false" style="width: 400px;"/>
+            
+                <p:outputLabel value="Nombre usuario:"/>
+                <p:inputText value="#{registroController.usuario.nombreUsuario}" style="width: 400px;"/>
+            
+                <p:outputLabel value="Contraseña:"/>
+                <p:password value="#{registroController.usuario.contrasenna}" match="clave2" style="width: 400px;"/>
+            
+                <p:outputLabel value="Confirmar contraseña:"/>
+                <p:password id="clave2" style="width: 400px;"/>
+            
+                <p:outputLabel value="Tipo usuario"/>
+                
+                
+                <p:selectOneMenu id="tipo" value="#{registroController.usuario.tipoUsuario}" 
+                                 style="min-width:150px; width:250px;" converter="usuarioConverter">
+                                        
+                    <f:selectItems value="#{registroController.tipoUsuarios}" var="tipoUsuario" 
+                                   itemLabel="#{tipoUsuario.nombreTipoUsuario}" itemValue="#{tipoUsuario}" />
+                     
+                </p:selectOneMenu>
+               
+                <h:outputLabel/>
+                <p:captcha label="Captcha" />
+                <h:outputLabel/>
+                <p:commandButton value="Confirmar" update="@form" action="#{registroController.registrar()}" />
+                <h:outputLabel/>
+                <p:commandButton  value="Atrás" action="landingPage.xhtml" update="@form"/>
+                  
+            </p:panelGrid>
+              
+            </h:form>
+              
+            <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
+                <div class="g-signin2" data-onsuccess="onSignIn" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
+            </div>
+            
+            <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
+                <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
+            </div>            
+            
+        </p:panel>
+        </p:panel> 
+        
+        <div id="status"></div>
+            
+        
+        <script>
+     // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else {
+      // The person is not logged into your app or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1096590507211106',
+      cookie     : true,  // enable cookies to allow the server to access 
+                          // the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v4.0' // The Graph API version to use for the call
+    });
+
+    // Now that we've initialized the JavaScript SDK, we call 
+    // FB.getLoginStatus().  This function gets the state of the
+    // person visiting this page and can return one of three states to
+    // the callback you provide.  They can be:
+    //
+    // 1. Logged into your app ('connected')
+    // 2. Logged into Facebook, but not your app ('not_authorized')
+    // 3. Not logged into Facebook and can't tell if they are logged into
+    //    your app or not.
+    //
+    // These three cases are handled in the callback function.
+
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    }, {scope: 'public_profile,email'});
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me?fields=first_name,last_name,email', function(response) {
+      console.log('Successful login for: ' + response.name);
+      buildProfile(response);
+    });
+    
+    
+  }
+  
+    function buildProfile(user){
+      
+      var profile = user;
+      console.log(user);
+      document.getElementById('for:nombre').value = profile.first_name;
+      document.getElementById('for:apellidos').value = profile.last_name;
+      document.getElementById('for:correo').value = profile.email;
+    }
+    </script>
+        
+    </h:body>
+    
+    <script>
+        
+           function onSignIn(googleUser) {
+                    // Useful data for your client-side scripts:
+           var profile = googleUser.getBasicProfile();
+                    
+           document.getElementById('for:nombre').value = profile.getGivenName();
+           document.getElementById('for:apellidos').value = profile.getFamilyName();
+           document.getElementById('for:correo').value = profile.getEmail();
+           
+           document.getElementById('for:correo').disabled   =   true;
+        
+           console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+           console.log('Full Name: ' + profile.getName());
+           console.log('Given Name: ' + profile.getGivenName());
+           console.log('Family Name: ' + profile.getFamilyName());
+           console.log("Image URL: " + profile.getImageUrl());
+           console.log("Email: " + profile.getEmail());
+ 
+                   // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+            
+            
+           // googleUser.auth.signOut();
+           // gapi.auth.signOut();
+            
+            }
+                                                    
+    </script>
+</html>

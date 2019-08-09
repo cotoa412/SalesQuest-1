@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:form>
+        <h:head>
+            <title>SalesQuest</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> </link>
+            <style>
+                .fa {
+                    padding: 20px;
+                    font-size: 30px;
+                    width: 50px;
+                    text-align: center;
+                    text-decoration: none;
+                    margin: 5px 2px;
+                }
+                .fa:hover {
+                    opacity: 0.7;
+                }
+                .fa-facebook {
+                    background: #3B5998;
+                    color: white;
+                }
+                .fa-google {
+                    background: #dd4b39;
+                    color: white;
+                }
+            </style>         
+            <style>
+                body { 
+                    background-color: #ccccff;
+                }
+            </style>
+            <style type="text/css">
+                body .ui-staticmessage.ui-message {
+                    width: 100%;
+                }
+            </style>
+        </h:head>
+    </h:form>
+
+    <h:body>
+        <p:graphicImage value="Images/logo.png" height="100" width="150"/> 
+
+
+        <h:form>
+            <p:growl id="messages" showDetail="true" life="2000" />
+
+            <p:menubar>
+                <p:menuitem value="Promociones" url="https://www.google.com"/>
+
+                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/> 
+
+                <p:menuitem value="Registrar" actionListener="#{registroController.linkRegistrar()}"/>
+
+                <p:menuitem value="Ingresar"  actionListener="#{loginController.redireccionar()}"/>
+
+
+
+
+                <f:facet name="options">
+                    <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
+
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+
+
+        <h:form id="recienteGuest">
+            <p:carousel value="#{promoController.promocion}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
+                    </f:facet>
+
+
+
+            <h:outputText value= "#{promocion.nombrePromo}" />
+            <a href="#{promocion.linkPromo}">Link</a>
+
+
+                </p:panelGrid>
+
+                <f:facet name="footer">
+
+                </f:facet>
+            </p:carousel>
+        </h:form>
+         <h:form id="destacadoGuest">
+            <p:carousel value="#{promoController.promocion}" headerText="Destacado" var="promocion" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
+                    </f:facet>
+
+
+
+            <h:outputText value= "#{promocion.nombrePromo}" />
+                    <a href="#{promocion.linkPromo}">Link</a>
+
+                </p:panelGrid>
+
+                <f:facet name="footer">
+
+                </f:facet>
+            </p:carousel>
+        </h:form>
+        <h:form id="trendingGuest">
+            <p:carousel value="#{promoController.promocion}" headerText="Trending" var="promocion" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
+                    </f:facet>
+
+
+
+            <h:outputText value= "#{promocion.nombrePromo}" />
+                    <a href="#{promocion.linkPromo}">Link</a>
+                </p:panelGrid>
+
+                <f:facet name="footer">
+
+                </f:facet>
+            </p:carousel>
+        </h:form>
+        <h:form id="form">
+
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:tabView dynamic="true" cache="true" effect="fold">
+                <p:tab title="Acerca de Nosotros:">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage value="Images/logo.png" height="200" />
+                        <h:outputText
+                            value="SaleQuest busca brindar una herramienta para compradores y vendedores donde puedan convivir con los diferentes productos que nuestra página ofrece gracias a nuestros oferentes. SaleQuest proporciona facilidad a la hora de buscar que comprar y en donde en poco tiempo." />
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Siganos en nuestras redes: ">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <a href="https://www.facebook.com"><img src="Images/facebook.jpg" width="82" height="86"/></a>
+
+                        <h:outputText value=" " />
+                        <a href="https://www.google.com"><img src="Images/google.png" width="82" height="86" /></a>
+
+                    </h:panelGrid>
+                </p:tab>
+            </p:tabView>
+        </h:form>
+        <h:form>
+            <p:growl id="growl" showDetail="true" life="2000" />
+            <p:outputPanel deferred="true" deferredMode="visible">
+                <h3>Comparta su opinión:</h3>
+                <p:inputTextarea rows="6" cols="103" value="#{contactoController.opinion}" placeholder="Ingrese su opinión"/>
+            </p:outputPanel>
+            <p:outputLabel value="*Puede durar varios segundos en cargar"/>
+                        <p></p>
+            <p:commandButton value="Enviar" action="#{contactoController.enviarOpinion()}" update="@form"/>         
+        </h:form>
+    </h:body>
+</html> 
