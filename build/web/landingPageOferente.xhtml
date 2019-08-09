@@ -45,51 +45,26 @@ and open the template in the editor.
     
     <h:body>
         <p:graphicImage value="../Images/logo.png" height="100" width="150"/> 
- 
+       
         <h:form>  
             
             <p:growl id="messages"/>
-        
-            <p:dialog header="Agregar Promocion" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="310">
-                
-             <p:panel style="font-size: 20px;text-align: center;width: 700px;margin: 0 auto;">
-                 
-            <h:form>
-            <p:growl id="growl" showDetail="true" life="2000" />  
-            <p:panelGrid columns="1" style="width: 650px;">
-                 
-                <p:outputLabel value="Link de promoción."/>
-                <p:inputText value="#{promoController.promocion.linkPromo}" style=" width: 300px;"/>
-                <p:outputLabel value="Nombre de la promocion"/>
-                <p:inputText value="#{promoController.promocion.nombrePromo}" style=" width: 300px;"/>
-                
-                <p:outputLabel value="Categoria."/>
-                
-                <p:selectOneMenu id="categoria" value="#{promoController.promocion.categoria}" 
-                                style="min-width:150px; width:300px;" converter="categoriaConverter">                                    
-                    <f:selectItems value="#{promoController.listaCategorias}" var="categoria" 
-                                   itemLabel="#{categoria.nombreCategoria}" itemValue="#{categoria}" />
-                </p:selectOneMenu>
-                
-                <h:outputLabel value=""/>
             
-                
-            </p:panelGrid>
-           <p:commandButton value="Añadir Promoción" action="olvidoContraInsertar" actionListener="#{recuperarContraController.recuperarContrasenna()}" update="@form"/>
-                                     
-        </h:form>
-
-        </p:panel>
-               
+            <p:dialog header="Agregar Promoción" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="300">
+                <iframe frameborder="0" align="left"
+                src="http://localhost:8080/SalesQuest/faces/agregarPromo.xhtml"
+                name="someName" id="someId" scrolling="auto" width="750"
+                height="500" marginheight="5" marginwidth="10" >
+                </iframe>
             </p:dialog>
-            
+        
             <p:menubar>
 
                 <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/>
 
                 <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
 
-                <p:menuitem value="Agregar Promocion" onclick="PF('dlg3').show();" />
+                <p:menuitem value="Agregar Promocion" actionListener="#{promoController}" onclick="PF('dlg3').show();" />
 
                 <f:facet name="options">
 
@@ -99,27 +74,26 @@ and open the template in the editor.
                     <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}"   />
                 </f:facet>
             </p:menubar>
+ 
         </h:form>
 
         <h:form id="recienteOferente">
-            <p:carousel value="#{promoController.promocion}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-                    <f:facet name="header">
-                        <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
-                    </f:facet>
-
-
-
-            <h:outputText value= "#{promocion.nombrePromo}" />
-                    <a href="#{promocion.linkPromo}">Link</a>
-
-
+        
+            <p:carousel value="#{promoController.listaPromociones}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true">
+            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                    
+                <f:facet name="header">
+                    <p:graphicImage value="../Images/download.jpg" height="150" width="150" />
+                </f:facet>
+                
+                <h:outputText value= "#{promocion.nombrePromo}" />
+                <a target="_blank" href="#{promocion.linkPromo}">Ir a promo</a>   
                 </p:panelGrid>
 
                 <f:facet name="footer">
 
                 </f:facet>
-            </p:carousel>
+        </p:carousel>
         </h:form>
          <h:form id="destacadoOferente">
             <p:carousel value="#{promoController.promocion}" headerText="Destacado" var="promocion" itemStyle="text-align:center" responsive="true">
