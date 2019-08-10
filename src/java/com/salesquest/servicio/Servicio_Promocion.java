@@ -71,7 +71,7 @@ public class Servicio_Promocion extends Servicio implements IDAO{
            this.conectar();//Me conecto a la base de datos.
                 
            stmt = conn.createStatement();
-           String sql = "INSERT INTO promocion(nombrePromocion,linkPromocion,categoria) VALUE('"+((Promocion)obj).getNombrePromo()+"','"+((Promocion)obj).getLinkPromo()+"','"+((Promocion)obj).getCategoria().getIdCategoria()+"')";                                                                                                            
+           String sql = "INSERT INTO promocion(nombrePromocion,linkPromocion,categoria,idUsuario) VALUE('"+((Promocion)obj).getNombrePromo()+"','"+((Promocion)obj).getLinkPromo()+"','"+((Promocion)obj).getCategoria().getIdCategoria()+"','"+((Promocion)obj).getIdUsuario()+"')";                                                                                                            
            int i = stmt.executeUpdate(sql);
            
        }catch(Exception e){
@@ -95,9 +95,14 @@ public class Servicio_Promocion extends Servicio implements IDAO{
     public void actualizarDato(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
     @Override
     public void eliminarDato(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public void anadirFavorito(){
+        
+    }
+    public void eliminarFavorito(){
+        
     }
 }

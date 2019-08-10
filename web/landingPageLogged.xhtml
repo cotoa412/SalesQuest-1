@@ -8,8 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui">
     <h:form> 
         <h:head>
             <title>SalesQuest</title>
@@ -79,22 +78,25 @@ and open the template in the editor.
         <p:carousel value="#{promoController.listaPromociones}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
-                        <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                    <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
                 </f:facet>
- 
+
                 <h:outputText value="Nombre:" />
                 <h:outputText value="#{promocion.nombrePromo}" />
-                
+
                 <h:outputText value="Categoria:" />
                 <h:outputText value="#{promocion.categoria}" />
- 
+
                 <h:outputText value="Link:" />
                 <a href="#{promocion.linkPromo}">Ver Promo</a>
-                
-                <f:facet name="footer">
-                        
-                </f:facet>
- 
+
+                <p:selectBooleanCheckbox value="#{promoController.anadirFavorito}" itemLabel="Añadir a favoritos?">
+                    <p:ajax update="msg" listener="#{promoController.meterFavorito()}" /></p:selectBooleanCheckbox>
+
+                    <f:facet name="footer">
+
+                    </f:facet>
+
             </p:panelGrid>
         </p:carousel>
         <h:form id="form">
@@ -127,7 +129,7 @@ and open the template in the editor.
                 <p:inputTextarea rows="6" cols="103" value="#{contactoController.opinion}" placeholder="Ingrese su opinión"/>
             </p:outputPanel>
             <p:outputLabel value="*Puede durar varios segundos en cargar"/>
-                        <p></p>
+            <p></p>
             <p:commandButton value="Enviar" action="#{contactoController.enviarOpinion()}" update="@form"/>                     
         </h:form>
     </h:body>
