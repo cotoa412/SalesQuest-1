@@ -85,7 +85,7 @@ and open the template in the editor.
             </div>
             
             <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
-                <div id="boton-facebook" class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
+                <div id="boton-facebook" onclick="ingresarConFacebook()" class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
             </div>            
             
         </p:panel>
@@ -95,7 +95,10 @@ and open the template in the editor.
             
         
         <script>
-     // This is called with the results from from FB.getLoginStatus().
+ 
+    
+    function ingresarConFacebook(){
+            // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -178,8 +181,10 @@ and open the template in the editor.
       document.getElementById('for:apellidos').value = profile.last_name;
       document.getElementById('for:correo').value = profile.email;
     }
+           
+    }
     
-    document.getElementById('for:boton-facebook').a
+    
     </script>
         
     </h:body>

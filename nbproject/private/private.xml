@@ -2,30 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Group 20190411-05:05:58">
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_Usuario.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/LoginController.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/landingPageLogged.xhtml</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/RegistroConverter.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/landingPage.xhtml</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_TipoUsuario.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/perfil.xhtml</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/model/TipoUsuario.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_EstadoCivil.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_Codigo.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/model/Usuario.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/landingPageOferente.xhtml</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/model/Categoria.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/recuperarContraController.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/registro.xhtml</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/CategoriaConverter.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/perfilController.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/model/EstadoCivil.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/RegistroController.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_Categoria.java</file>
-            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/UsuarioConverter.java</file>
-        </group>
         <group>
             <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/web/agregarPromo.xhtml</file>
             <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/perfilController.java</file>
@@ -40,6 +16,32 @@
             <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/controller/RegistroController.java</file>
             <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/web/landingPageOferente.xhtml</file>
             <file>file:/C:/Users/Laboratorio/Documents/NetBeansProjects/SalesQuest/src/java/com/salesquest/servicio/Servicio_Usuario.java</file>
+        </group>
+        <group name="Group 20190411-05:05:58">
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/landingPage.xhtml</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/Contacto.xhtml</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/model/TipoUsuario.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_Usuario.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/UsuarioConverter.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/model/Usuario.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/perfilController.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/recuperarContraController.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_EstadoCivil.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/registro.xhtml</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_Categoria.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/LoginController.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_TipoUsuario.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/CategoriaConverter.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/landingPageOferente.xhtml</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/contactoController.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/landingPageLogged.xhtml</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/model/Categoria.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/RegistroConverter.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/web/perfil.xhtml</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/model/EstadoCivil.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/servicio/Servicio_Codigo.java</file>
+            <file>file:/C:/Users/Personal/Desktop/SalesQuest/src/java/com/salesquest/controller/RegistroController.java</file>
         </group>
     </open-files>
 </project-private>

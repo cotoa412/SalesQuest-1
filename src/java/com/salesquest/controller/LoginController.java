@@ -181,9 +181,7 @@ public class LoginController {
     public void redireccionar(){
     
      try {
-            FacesContext.getCurrentInstance().getExternalContext()
-                    .invalidateSession();
-
+  
             HttpServletRequest request = (HttpServletRequest) FacesContext
                     .getCurrentInstance().getExternalContext().getRequest();
             FacesContext
