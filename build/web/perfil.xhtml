@@ -46,7 +46,7 @@ and open the template in the editor.
                 <p:inputText id="dirección" value="#{perfilController.perfil.usuario.direccion}" disabled="#{perfilController.editar2}" style="width: 400px;"/>
                 
                 <p:outputLabel value="Fecha de nacimiento:"/>
-                <p:calendar value="#{perfilController.perfil.usuario.fechaNacimiento}" disabled="#{perfilController.editar2}" style="width: 400px;"/>
+                <p:calendar value="#{perfilController.perfil.usuario.fechaNacimiento}" locale="es" pattern="dd/MM/yyyy" disabled="#{perfilController.editar2}" style="width: 400px;"/>
             
                 <p:outputLabel value="Teléfono:"/>
                 <p:inputText id="telefono" value="#{perfilController.perfil.usuario.telefono}" disabled="#{perfilController.editar2}" style="width: 400px;"/>

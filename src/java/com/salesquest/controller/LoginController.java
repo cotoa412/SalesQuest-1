@@ -90,14 +90,7 @@ public class LoginController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-                
-            if (this.usuario.getDireccion() == null) {
-                
-                this.redireccionarAlPerfil();
-                    
-              }
-            
-            
+               
             
         }else{
         

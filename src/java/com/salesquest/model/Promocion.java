@@ -17,6 +17,8 @@ public class Promocion {
     private String linkPromo;
     private String nombrePromo;
     private Categoria categoria;
+    private boolean favorito = false;
+    
     public Promocion() {
     }
 
@@ -70,6 +72,15 @@ public class Promocion {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
+    }
+    
     
     
 }

@@ -7,12 +7,14 @@ package com.salesquest.controller;
 
 import com.salesquest.model.Categoria;
 import com.salesquest.model.Promocion;
+import com.salesquest.servicio.ServicioFavorito;
 import com.salesquest.servicio.Servicio_Categoria;
 import com.salesquest.servicio.Servicio_Promocion;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -25,9 +27,13 @@ import javax.servlet.http.HttpServletRequest;
 @SessionScoped
 public class PromoController {
     
+    ServicioFavorito sf = new ServicioFavorito();
     private Promocion promocion = new Promocion();
     private List<Categoria> listaCategorias = new ArrayList<Categoria>();
     private List<Promocion> listaPromociones = new ArrayList<Promocion>();
+    @ManagedProperty("#{loginController}")
+    private LoginController usuario;
+    
     
     public PromoController(){
         this.cargarListaCategorias();
@@ -61,6 +67,15 @@ public class PromoController {
     public void setListaPromociones(List<Promocion> listaPromociones) {
         this.listaPromociones = listaPromociones;
     }
+
+    public LoginController getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(LoginController usuario) {
+        this.usuario = usuario;
+    }
+    
     
     
     public void cargarListaCategorias(){
@@ -122,6 +137,5 @@ public class PromoController {
         this.promocion.setLinkPromo("");
     
     }
-    
-    
+   
 }
