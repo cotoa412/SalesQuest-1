@@ -23,6 +23,8 @@ and open the template in the editor.
         <script async="async" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v3.3&amp;appId=1937321129700921&amp;autoLogAppEvents=1">;</script>
         
     </h:head>
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v4.0"></script>
     <h:body>
         
         <p:panel id="basic" header="Registrar"  style="margin-bottom:20px;text-align: center; width: 700px; margin: 0 auto;">
@@ -84,9 +86,9 @@ and open the template in the editor.
                 <div class="g-signin2" data-onsuccess="onSignIn" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
             </div>
             
-            <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
-                <div id="boton-facebook" onclick="ingresarConFacebook()" class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
-            </div>            
+            
+            
+          <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
             
         </p:panel>
         </p:panel> 
@@ -94,10 +96,14 @@ and open the template in the editor.
         <div id="status"></div>
             
         
-        <script>
+        
+        
+    </h:body>
+    
+    <script>
  
     
-    function ingresarConFacebook(){
+  
             // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -113,6 +119,8 @@ and open the template in the editor.
       // The person is not logged into your app or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
+        
+        
     }
   }
 
@@ -129,7 +137,7 @@ and open the template in the editor.
     FB.init({
       appId      : '1096590507211106',
       cookie     : true,  // enable cookies to allow the server to access 
-                          // the session
+      status     : true,              // the session
       xfbml      : true,  // parse social plugins on this page
       version    : 'v4.0' // The Graph API version to use for the call
     });
@@ -182,12 +190,10 @@ and open the template in the editor.
       document.getElementById('for:correo').value = profile.email;
     }
            
-    }
+    
     
     
     </script>
-        
-    </h:body>
     
     <script>
         
