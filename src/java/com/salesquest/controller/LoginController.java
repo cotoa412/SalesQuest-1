@@ -5,9 +5,7 @@
  */
 package com.salesquest.controller;
 
-import com.salesquest.model.TipoUsuario;
 import com.salesquest.model.Usuario;
-import com.salesquest.servicio.Servicio_TipoUsuario;
 import com.salesquest.servicio.Servicio_Usuario;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -23,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 @ManagedBean(name = "loginController")
 @SessionScoped
 public class LoginController {
-
+  
     //private String tU;
     private String ingreso;
     private String contra;
@@ -40,62 +38,14 @@ public class LoginController {
         Servicio_Usuario su = new Servicio_Usuario();
        
         for (Object obj : su.mostrarDatos()) {
-            if (((Usuario)obj).getNombreUsuario().equalsIgnoreCase(ingreso) && ((Usuario)obj).getContrasenna().equalsIgnoreCase(contra)) {
-                
+            if (((Usuario)obj).getNombreUsuario().equalsIgnoreCase(ingreso) && ((Usuario)obj).getContrasenna().equalsIgnoreCase(contra)) { 
                 usuario = ((Usuario)obj);
-
+                this.redireccionALandingPage(usuario);
             }else{
-                
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario o contraseña incorrecta.");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
-                
             }
-        }
-        
-        
-        
-        if (usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("oferente")) {   
-            PromoController pr = new PromoController();
-            pr.cargarListaCategorias();
-            try {
-           
-            HttpServletRequest request = (HttpServletRequest) FacesContext
-                    .getCurrentInstance().getExternalContext().getRequest();
-            FacesContext
-                    .getCurrentInstance()
-                    .getExternalContext()
-                    .redirect(
-                            request.getContextPath()
-                            + "/faces/landingPageOferente.xhtml?faces-redirect=true");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-            if (this.usuario.getDireccion() == null) {
-                    this.redireccionarAlPerfil();
-            }
-            
-        }else if(usuario.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("consumidor")){
-    
-            try {
-           
-            HttpServletRequest request = (HttpServletRequest) FacesContext
-                    .getCurrentInstance().getExternalContext().getRequest();
-            FacesContext
-                    .getCurrentInstance()
-                    .getExternalContext()
-                    .redirect(
-                            request.getContextPath()
-                            + "/faces/landingPageLogged.xhtml?faces-redirect=true");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-               
-            
-        }else{
-        
-        }
-        
+        }  
     }
     
     public void redireccionarAlPerfil(){
@@ -109,15 +59,73 @@ public class LoginController {
                     .getExternalContext()
                     .redirect(
                             request.getContextPath()
-                            + "./faces/perfil.xhtml?faces-redirect=true");
+                            + "/faces/perfil.xhtml?faces-redirect=true");
             } catch (Exception e) {
                 e.printStackTrace();
             }
                     
     }
     
+    public void perfilPrimeraVe(Usuario u){
+        
+        
+        if (u.getDireccion() == null || u.getTelefono()== null || u.getFechaNacimiento() == null || u.getEstadoCivil() == null || u.getCategoriaFavorita() == null) {
+            
+            this.redireccionarAlPerfil();
+            
+        }else{
+            
+            
+            
+        }
+        
     
     
+    }
+    
+    
+    public void redireccionALandingPage(Usuario u){
+        
+        if (u.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("oferente")) {   
+                    PromoController pr = new PromoController();
+                    pr.cargarListaCategorias();
+            
+                    try {
+           
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/landingPageOferente.xhtml?faces-redirect=true");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+           
+            
+            }else if(u.getTipoUsuario().getNombreTipoUsuario().equalsIgnoreCase("consumidor")){
+    
+                try {
+           
+                    HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+                    FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/landingPageLogged.xhtml?faces-redirect=true");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                          
+          }
+        
+        this.perfilPrimeraVe(u);
+    
+    }
     
     public void logout() {
 
@@ -132,7 +140,7 @@ public class LoginController {
                     .getExternalContext()
                     .redirect(
                             request.getContextPath()
-                            + "/faces/login.xhtml?faces-redirect=true");
+                            + "/faces/landingPage.xhtml?faces-redirect=true");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -187,6 +195,5 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-    
-
+   
 }

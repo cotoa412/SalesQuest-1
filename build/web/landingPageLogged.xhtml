@@ -100,27 +100,71 @@ and open the template in the editor.
 
                 <h:outputText value="Link:" />
                 <a href="#{promocion.linkPromo}">Ver Promo</a>
-
                 <f:facet name="footer">
                 </f:facet>
 
             </p:panelGrid>
         </p:carousel>
-        <p:pickList id="PickList" value="#{promoController.listaPromociones}" var="favoritas" effect="bounce"
-                    itemValue="#{theme}" itemLabel="#{promoController.promocion.nombrePromo}" showSourceControls="true" showTargetControls="true" showCheckbox="false"
-                    showSourceFilter="true" showTargetFilter="false" filterMatchMode="contains" converter="theme" responsive="true">
+        
+        <p:carousel value="#{promoController.listaPromocionesVideoJuegos}" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                <f:facet name="header">
+                        <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                </f:facet>
+ 
+                <h:outputText value="Nombre:" />
+                <h:outputText value="#{promocion.nombrePromo}" />
+                
+                <h:outputText value="Categoria:" />
+                <h:outputText value="#{promocion.categoria}" />
+ 
+                <h:outputText value="Link:" />
+                <a href="#{promocion.linkPromo}">Ver Promo</a>
+                
+                <f:facet name="footer">
+                        
+                </f:facet>
+ 
+            </p:panelGrid>
+        </p:carousel>
+        
+        <p:carousel value="#{promoController.listaPromocionesDeportes}" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                <f:facet name="header">
+                        <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                </f:facet>
+ 
+                <h:outputText value="Nombre:" />
+                <h:outputText value="#{promocion.nombrePromo}" />
+                
+                <h:outputText value="Categoria:" />
+                <h:outputText value="#{promocion.categoria}" />
+ 
+                <h:outputText value="Link:" />
+                <a href="#{promocion.linkPromo}">Ver Promo</a>
+                
+                <f:facet name="footer">
+                        
+                </f:facet>
+ 
+            </p:panelGrid>
+        </p:carousel>
+        
+        <p:pickList id="PickList" value="#{promoController.favoritas}" var="favorito" effect="bounce"
+                    itemValue="#{favorito}" itemLabel="#{favorito}" showSourceControls="false" showTargetControls="true" showCheckbox="false"
+                    showSourceFilter="true" showTargetFilter="false" filterMatchMode="contains"  responsive="true">
 
             <f:facet name="sourceCaption">Promociones</f:facet>
             <f:facet name="targetCaption">Favoritas</f:facet>
 
             <p:ajax event="transfer" listener="#{promoController.onTransfer}" update="msg" />
 
-            <p:column style="width:15%">
-                <img src="../Images/promocion.jpg" width="150" height="150"></img>
+            <p:column style="width:20px">
+                <img src="../Images/promocion.jpg" width="20" height="20"></img>
             </p:column>
 
-            <p:column style="width:85%;">
-                <h:outputText value="#{promoController.promocion.nombrePromo}" />
+            <p:column style="width:20px;">
+                <h:outputText value="#{promoController.favoritas.target}" />
             </p:column>
         </p:pickList>
 

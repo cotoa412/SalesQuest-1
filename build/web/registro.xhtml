@@ -20,8 +20,7 @@ and open the template in the editor.
         <meta name="google-signin-scope" content="profile email"/>
         <meta name="google-signin-client_id" content="433078179733-jsacugdqinuj37cnvk837e3986pt1rpf.apps.googleusercontent.com"/>
         <script src="https://apis.google.com/js/platform.js"></script>
-        <script async="async" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v3.3&amp;appId=1937321129700921&amp;autoLogAppEvents=1">;</script>
-        
+       
     </h:head>
     
     <h:body>
@@ -85,10 +84,26 @@ and open the template in the editor.
                 <div class="g-signin2" data-onsuccess="onSignIn" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
             </div>
             
-          <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
-                <div id="boton-facebook" class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true" style="width: 500px; border: solid gray 2px; border-radius: 5px;"></div>
-          </div>  
+            <div style="width: 600px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;">
+                <div style="width: 500px; margin: 10px auto 5px; padding: 5px; display: flex; justify-content: center;
+                 background-color: #3B5998; border-radius: 5px;">
+                <a style=" text-decoration: none;color: white" href="#" id="login" class="btn btn-primary">Registro con Facebook</a>
+                </div>
+            </div>
             
+          
+            
+          
+              
+          <script>
+              (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+          </script>
           
         </p:panel>
         </p:panel> 
@@ -98,94 +113,106 @@ and open the template in the editor.
     </h:body>
     
     <script>
-     // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1096590507211106',
-      cookie     : true,  // enable cookies to allow the server to access                     // the session
-      xfbml      : true,  // parse social plugins on this page
-      version    : 'v4.0' // The Graph API version to use for the call
-    });
-
-    // Now that we've initialized the JavaScript SDK, we call 
-    // FB.getLoginStatus().  This function gets the state of the
-    // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
-    //
-    // 1. Logged into your app ('connected')
-    // 2. Logged into Facebook, but not your app ('not_authorized')
-    // 3. Not logged into Facebook and can't tell if they are logged into
-    //    your app or not.
-    //
-    // These three cases are handled in the callback function.
-
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    }, {scope: 'public_profile,email'});
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me?fields=first_name,last_name,email', function(response) {
-      console.log('Successful login for: ' + response.name);
-      buildProfile(response);
-    });
     
-    
-  }
-  
-    function buildProfile(user){
+    $(function() {
+
+	var app_id = '1096590507211106';
+	var scopes = 'email,public_profile';
+	var btn_login = '<a href="#" id="login" class="btn btn-primary">Iniciar sesión</a>';
+
+	window.fbAsyncInit = function() {
+
+	  	FB.init({
+	    	appId      : app_id,
+                status     :true,
+	    	cookie     : true, 
+	    	xfbml      : true, 
+	    	version    : 'v4.0'
+	  	});
+
+
+	  	FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response, function() {});
+	  	});
+  	};
+
+  	var statusChangeCallback = function(response, callback) {
+  		console.log(response);
+   		
+    	if (response.status === 'connected') {
+      		testAPI();
+    	} else {
+     		callback(false);
+    	}
+  	};
+
+  	var checkLoginState = function(callback) {
+    	FB.getLoginStatus(function(response) {
+      		callback(response);
+    	});
+  	};
+        
+          function testAPI() {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me?fields=first_name,last_name,email', function(response) {
+            console.log('Successful login for: ' + response.name);
+            buildProfile(response);
+            });
+        }
+   
+  	var facebookLogin = function() {
+  		checkLoginState(function(data) {
+  			if (data.status !== 'connected') {
+  				FB.login(function(response) {
+  					if (response.status === 'connected')
+  						testAPI();
+  				}, {scope: scopes});
+  			}
+  		});
+  	};
+
+  	var facebookLogout = function() {
+  		checkLoginState(function(data) {
+  			if (data.status === 'connected') {
+				FB.logout(function(response) {
+					$('#facebook-session').before(btn_login);
+					$('#facebook-session').remove();
+				});
+			}
+  		});
+
+  	};
+
+        function buildProfile(user){
       
       var profile = user;
       console.log(user);
       document.getElementById('for:nombre').value = profile.first_name;
       document.getElementById('for:apellidos').value = profile.last_name;
       document.getElementById('for:correo').value = profile.email;
+      
     }
+
+  	$(document).on('click', '#login', function(e) {
+  		e.preventDefault();
+
+  		facebookLogin();
+  	});
+
+  	$(document).on('click', '#logout', function(e) {
+  		e.preventDefault();
+
+  		if (confirm("¿Está seguro?"))
+  			facebookLogout();
+  		else 
+  			return false;
+  	});
+
+});
     
-    document.getElementById('for:boton-facebook');
-    </script>
-        
-    </h:body>
     
+</script>
+            
     <script>
         
            function onSignIn(googleUser) {

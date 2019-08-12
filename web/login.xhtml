@@ -18,9 +18,12 @@
          <p:panel id="basic" header="Ingreso"  style="margin-bottom:20px;text-align: center;">
         
              <p:panel style="font-size: 20px;text-align: center;width: 700px;margin: 0 auto;">
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
         <h1>Ingreso al Sistema</h1>
         <h:form>
-            <p:growl id="growl" showDetail="true" life="2000" />  
+             
            <h:outputLabel value="#{loginController.mensaje}"/>
             <h:panelGrid columns="2" style="width: 510px;">
                 
