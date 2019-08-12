@@ -5,8 +5,6 @@
  */
 package com.salesquest.model;
 
-import com.salesquest.model.Categoria;
-
 /**
  *
  * @author Kainthel
@@ -17,8 +15,6 @@ public class Promocion {
     private String linkPromo;
     private String nombrePromo;
     private Categoria categoria;
-    private int idUsuario;
-    private boolean favorito = false;
     
     public Promocion() {
     }
@@ -74,21 +70,7 @@ public class Promocion {
         this.categoria = categoria;
     }
 
-    public boolean isFavorito() {
-        return favorito;
-    }
 
-    public void setFavorito(boolean favorito) {
-        this.favorito = favorito;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
     
     
     

@@ -9,9 +9,11 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <h:form> 
+    <h:form>
         <h:head>
             <title>SalesQuest</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> </link>
             <style>
                 .fa {
                     padding: 20px;
@@ -37,11 +39,6 @@ and open the template in the editor.
                 body { 
                     background-color: #ccccff;
                 }
-            </style>       
-            <style>
-                body { 
-                    background-color: #ccccff;
-                }
             </style> 
             <style type="text/css">
                 .ui-outputlabel {
@@ -51,30 +48,44 @@ and open the template in the editor.
                 .ui-orderlist .ui-orderlist-list {
                     height: auto;
                 }
-            </style> 
+            </style>             
         </h:head>
     </h:form>
-    <h:body>
 
-        <p:graphicImage value="../Images/logo.png" height="100" width="150"/>
+    <h:body>
+        <p:graphicImage value="../Images/logo.png" height="100" width="150"/> 
+
         <h:form>  
+
             <p:growl id="messages"/>
+
+            <p:dialog header="Agregar Promoción" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="300">
+                <iframe frameborder="0" align="left"
+                        src="https://salesquest.website/faces/agregarPromo.xhtml?faces-redirect=true"
+                        name="someName" id="someId" scrolling="auto" width="750"
+                        height="500" marginheight="5" marginwidth="10" >
+                </iframe>
+            </p:dialog>
 
             <p:menubar>
 
-                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/> 
+                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/>
 
                 <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
 
+                <p:menuitem value="Agregar Promocion" actionListener="#{promoController}" onclick="PF('dlg3').show();" />
+
                 <f:facet name="options">
+
                     <h:outputText value="Bienvenido #{perfilController.perfil.usuario.nombre}" />
                     <h:outputText value="      " />
                     <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-                    <p:commandButton type="button" value="Cerrar Sesión" actionListener="#{loginController.logout()}"  />
+                    <p:commandButton value="Cerrar Sesión" actionListener="#{loginController.logout()}"   />
                 </f:facet>
             </p:menubar>
-        </h:form>
 
+        </h:form>
+        <p:growl id="msg" showDetail="true" life="2000" />
         <p:carousel value="#{promoController.listaPromociones}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
@@ -90,15 +101,29 @@ and open the template in the editor.
                 <h:outputText value="Link:" />
                 <a href="#{promocion.linkPromo}">Ver Promo</a>
 
-                <p:selectBooleanCheckbox value="#{promoController.anadirFavorito}" itemLabel="Añadir a favoritos?">
-                    <p:ajax update="msg" listener="#{promoController.meterFavorito()}" /></p:selectBooleanCheckbox>
-
-                    <f:facet name="footer">
-
-                    </f:facet>
+                <f:facet name="footer">
+                </f:facet>
 
             </p:panelGrid>
         </p:carousel>
+        <p:pickList id="PickList" value="#{promoController.listaPromociones}" var="favoritas" effect="bounce"
+                    itemValue="#{theme}" itemLabel="#{promoController.promocion.nombrePromo}" showSourceControls="true" showTargetControls="true" showCheckbox="false"
+                    showSourceFilter="true" showTargetFilter="false" filterMatchMode="contains" converter="theme" responsive="true">
+
+            <f:facet name="sourceCaption">Promociones</f:facet>
+            <f:facet name="targetCaption">Favoritas</f:facet>
+
+            <p:ajax event="transfer" listener="#{promoController.onTransfer}" update="msg" />
+
+            <p:column style="width:15%">
+                <img src="../Images/promocion.jpg" width="150" height="150"></img>
+            </p:column>
+
+            <p:column style="width:85%;">
+                <h:outputText value="#{promoController.promocion.nombrePromo}" />
+            </p:column>
+        </p:pickList>
+
         <h:form id="form">
 
             <p:growl id="msgs" showDetail="true" />
@@ -108,8 +133,7 @@ and open the template in the editor.
                     <h:panelGrid columns="2" cellpadding="10">
                         <img src="../Images/logo.jpeg" width="150" height="150" alt="promo"></img>
                         <h:outputText
-                            value="SaleQuest busca brindar una herramienta para compradores y vendedores donde puedan convivir con los diferentes productos que nuestra página ofrece gracias a nuestros oferentes. SaleQuest proporciona facilidad a la hora de buscar que comprar y en donde en poco tiempo."
-                            />
+                            value="SaleQuest busca brindar una herramienta para compradores y vendedores donde puedan convivir con los diferentes productos que nuestra página ofrece gracias a nuestros oferentes. SaleQuest proporciona facilidad a la hora de buscar que comprar y en donde en poco tiempo." />
                     </h:panelGrid>
                 </p:tab>
                 <p:tab title="Siganos en nuestras redes: ">
@@ -130,7 +154,7 @@ and open the template in the editor.
             </p:outputPanel>
             <p:outputLabel value="*Puede durar varios segundos en cargar"/>
             <p></p>
-            <p:commandButton value="Enviar" action="#{contactoController.enviarOpinion()}" update="@form"/>                     
+            <p:commandButton value="Enviar" action="#{contactoController.enviarOpinion()}" update="@form"/>                         
         </h:form>
     </h:body>
 </html> 
