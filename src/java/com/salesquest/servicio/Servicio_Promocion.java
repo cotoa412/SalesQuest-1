@@ -71,7 +71,7 @@ public class Servicio_Promocion extends Servicio implements IDAO{
            this.conectar();//Me conecto a la base de datos.
                 
            stmt = conn.createStatement();
-           String sql = "INSERT INTO promocion(nombrePromocion,linkPromocion,categoria,favorito) VALUE('"+((Promocion)obj).getNombrePromo()+"','"+((Promocion)obj).getLinkPromo()+"','"+((Promocion)obj).getCategoria().getIdCategoria()+"')";                                                                                                            
+           String sql = "INSERT INTO promocion(nombrePromocion,linkPromocion,categoria) VALUE('"+((Promocion)obj).getNombrePromo()+"','"+((Promocion)obj).getLinkPromo()+"','"+((Promocion)obj).getCategoria().getIdCategoria()+"')";                                                                                                            
            int i = stmt.executeUpdate(sql);
            
        }catch(Exception e){

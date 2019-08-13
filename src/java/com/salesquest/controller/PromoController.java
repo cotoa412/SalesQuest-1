@@ -25,7 +25,7 @@ import org.primefaces.model.DualListModel;
 @ManagedBean(name = "promoController")
 @SessionScoped
 public class PromoController {
-    
+        
     private Promocion promocion = new Promocion();
     private DualListModel<Promocion> favoritas;
     private List<Categoria> listaCategorias = new ArrayList<Categoria>();
@@ -83,10 +83,7 @@ public class PromoController {
     public void setListaPromocionesVideoJuegos(List<Promocion> listaPromocionesVideoJuegos) {
         this.listaPromocionesVideoJuegos = listaPromocionesVideoJuegos;
     }
-    
-    
-    
-    
+      
     public void cargarListaCategorias(){
         
         Servicio_Categoria s = new Servicio_Categoria();
@@ -120,7 +117,7 @@ public class PromoController {
         for (Object o : sp.mostrarDatos()) {
             this.listaPromociones.add((Promocion)o);
         }
-        
+         
     }
     
     public void redireccionar(){
@@ -158,7 +155,12 @@ public class PromoController {
         
         this.promocion.setNombrePromo("");
         this.promocion.setLinkPromo("");
-    
+        
+        this.cargarListaCategorias();
+        this.cargarPromociones();
+        this.cargarListarXCategoria();
+        this.iniciar();
+             
     }
     
     public void iniciar(){

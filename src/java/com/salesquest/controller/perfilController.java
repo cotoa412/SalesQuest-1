@@ -5,31 +5,19 @@
  */
 package com.salesquest.controller;
 import com.salesquest.model.Categoria;
-import com.salesquest.model.Usuario;
-import com.salesquest.servicio.Servicio_Codigo;
 import com.salesquest.servicio.Servicio_Usuario;
-import com.salesquest.model.Codigo;
 import com.salesquest.model.EstadoCivil;
 import com.salesquest.servicio.Servicio_Categoria;
 import com.salesquest.servicio.Servicio_EstadoCivil;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author Laboratorio
