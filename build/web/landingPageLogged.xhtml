@@ -70,20 +70,20 @@ and open the template in the editor.
             <p:dialog header="Agregar a Favorito" widgetVar="promo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                     <iframe frameborder="0" align="left"
                         src="http://localhost:8080/SalesQuest/faces/agregarFavorita.xhtml"
-                        name="someName" scrolling="auto" width="750"
-                        height="500" marginheight="5" marginwidth="10" >
+                        name="someName" scrolling="auto" width="500"
+                        height="150" marginheight="5" marginwidth="10" >
                     </iframe>
             </p:dialog>
 
-            <p:menubar>
+            <p:menubar style=" border: solid gray 2px; border-radius: 5px;" >
 
-                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/>
+                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
 
-                <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
+                <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;"  />
 
-                <p:menuitem value="Ver pormos favoritas" actionListener="#{favoritasController.redireccionarFavoritas()}" />
+                <p:menuitem value="Ver favoritas" actionListener="#{favoritasController.redireccionarFavoritas()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
                 
-                <p:menuitem value="Agregar a favoritas" onclick="PF('promo').show();" />
+                <p:menuitem value="Agregar a favoritas" onclick="PF('promo').show();" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
                 
                 <f:facet name="options">
                     <h:outputText value="Bienvenido #{perfilController.perfil.usuario.nombre}" />
@@ -96,7 +96,7 @@ and open the template in the editor.
         </h:form>
         <p:growl id="msg" showDetail="true" life="2000" />
         
-        <p:carousel styleClass="carousel" value="#{promoController.listaPromocionesVideoJuegos}" autoPlayInterval="5000" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+        <p:carousel styleClass="carousel" value="#{promoController.listaPromocionesVideoJuegos}" circular="true" autoPlayInterval="5000" effect="fade" effectDuration="3000" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
                         <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
@@ -112,13 +112,13 @@ and open the template in the editor.
                     <a href="#{promocion.linkPromo}" target="_blank">Ver Promo</a>
                 
                 <f:facet name="footer">
-                    <p:commandButton value="Agregar a favoritas" onclick="PF('promo').show();"/> 
+                     
                 </f:facet>
      
             </p:panelGrid>
         </p:carousel>
         
-        <p:carousel styleClass="carousel" value="#{promoController.listaPromocionesDeportes}" autoPlayInterval="5000" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+        <p:carousel styleClass="carousel" value="#{promoController.listaPromocionesDeportes}" circular="true"  autoPlayInterval="5000" effect="fade" effectDuration="3000" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
                         <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
@@ -141,7 +141,7 @@ and open the template in the editor.
         </p:carousel>
         
     
-        <h:form id="form">
+        <h:form id="form" style="border: solid gray 2px; border-radius: 5px;">
 
             <p:growl id="msgs" showDetail="true" />
 
@@ -163,7 +163,7 @@ and open the template in the editor.
                 </p:tab>
             </p:tabView>
         </h:form>
-        <h:form>
+        <h:form style="border: solid gray 2px; border-radius: 5px;">
             <p:growl id="growl" showDetail="true" life="2000" />
             <p:outputPanel deferred="true" deferredMode="visible">
                 <h3>Comparta su opinión:</h3>

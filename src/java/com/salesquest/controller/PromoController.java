@@ -18,7 +18,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-import org.primefaces.model.DualListModel;
 
 /**
  *
@@ -86,7 +85,7 @@ public class PromoController {
     public void setListaPromocionesVideoJuegos(List<Promocion> listaPromocionesVideoJuegos) {
         this.listaPromocionesVideoJuegos = listaPromocionesVideoJuegos;
     }
-    
+        
     public void cargarListaCategorias(){
         
         Servicio_Categoria s = new Servicio_Categoria();
@@ -174,6 +173,8 @@ public class PromoController {
         this.cargarListarXCategoria();
         
     }
+    
+   
         
 }
 

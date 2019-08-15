@@ -147,7 +147,7 @@ public class perfilController {
         
         su.actualizarDatos(this.perfil.getUsuario());
         
-        if (this.perfil.getUsuario().getDireccion() != "") {
+        if (this.perfil.getUsuario().getDireccion() != null || this.perfil.getUsuario().getTelefono() != null || this.perfil.getUsuario().getFechaNacimiento() != null || this.perfil.getUsuario().getEstadoCivil() != null || this.perfil.getUsuario().getCategoriaFavorita() != null) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Correcto", "Registro Completado.");
             FacesContext.getCurrentInstance().addMessage(null, msg);
             this.editar = true;

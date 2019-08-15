@@ -63,24 +63,21 @@ and open the template in the editor.
 
         <h:form>
             <p:growl id="messages" showDetail="true" life="2000" />
+            
+            <p:menubar style=" border: solid gray 2px; border-radius: 5px; display: flex; justify-content: space-between;" >
 
-            <p:menubar>
-                <p:menuitem value="Promociones" url="https://www.google.com"/>
+                
+                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
 
-                <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}"/> 
+                <p:menuitem value="Registrar" actionListener="#{registroController.linkRegistrar()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;"/>
 
-                <p:menuitem value="Registrar" actionListener="#{registroController.linkRegistrar()}"/>
+                <p:menuitem value="Ingresar"  actionListener="#{loginController.redireccionar()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;"/>
+                
+            </p:menubar>    
 
-                <p:menuitem value="Ingresar"  actionListener="#{loginController.redireccionar()}"/>
-
-                <f:facet name="options">
-                    <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-
-                </f:facet>
-            </p:menubar>
         </h:form>
 
-        <p:carousel styleClass="carousel" value="#{promoController.listaPromociones}" circular="true" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+        <p:carousel styleClass="carousel" value="#{promoController.listaPromociones}" circular="true" autoPlayInterval="5000" effect="fade" effectDuration="3000" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
                         <img src="Images/promocion.jpg" width="150" height="150" alt="promo"></img>
@@ -101,7 +98,7 @@ and open the template in the editor.
             </p:panelGrid>
         </p:carousel>
 
-        <h:form id="form">
+        <h:form id="form" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
 
             <p:growl id="msgs" showDetail="true" />
 
@@ -124,7 +121,7 @@ and open the template in the editor.
                 </p:tab>
             </p:tabView>
         </h:form>
-        <h:form>
+        <h:form style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:growl id="growl" showDetail="true" life="2000" />
             <p:outputPanel deferred="true" deferredMode="visible">
                 <h3>Comparta su opinión:</h3>

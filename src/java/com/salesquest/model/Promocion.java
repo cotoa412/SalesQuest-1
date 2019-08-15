@@ -5,6 +5,8 @@
  */
 package com.salesquest.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author Kainthel
@@ -70,8 +72,46 @@ public class Promocion {
         this.categoria = categoria;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + this.idPromocion;
+        hash = 37 * hash + Objects.hashCode(this.linkPromo);
+        hash = 37 * hash + Objects.hashCode(this.nombrePromo);
+        hash = 37 * hash + Objects.hashCode(this.categoria);
+        return hash;
+    }
 
-   public String toString(){
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Promocion other = (Promocion) obj;
+        if (this.idPromocion != other.idPromocion) {
+            return false;
+        }
+        if (!Objects.equals(this.linkPromo, other.linkPromo)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombrePromo, other.nombrePromo)) {
+            return false;
+        }
+        if (!Objects.equals(this.categoria, other.categoria)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+
+    public String toString(){
    
        return this.getIdPromocion() + " " + this.getNombrePromo() + " " +this.getLinkPromo();
    } 
