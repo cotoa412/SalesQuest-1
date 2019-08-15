@@ -16,4 +16,5 @@ public interface IDAO {
     public void insertarDato(Object obj);
     public void actualizarDato(Object obj);
     public void eliminarDato(Object obj);
+    
 }

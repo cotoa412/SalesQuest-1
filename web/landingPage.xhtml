@@ -80,7 +80,7 @@ and open the template in the editor.
             </p:menubar>
         </h:form>
 
-        <p:carousel value="#{promoController.listaPromociones}" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+        <p:carousel styleClass="carousel" value="#{promoController.listaPromociones}" circular="true" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
                         <img src="Images/promocion.jpg" width="150" height="150" alt="promo"></img>

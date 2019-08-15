@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>SalesQuest</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+                        <p:growl id="growl" showDetail="true" life="2000" />  
+           <h:form>
+               <p:outputLabel value="#{favoritasController.u.usuario.nombre}"/>
+                        <p:panelGrid columns="2">
+                            <p:selectOneMenu value="#{favoritasController.promoSeleccionada}" 
+                                 style="min-width:150px; width:250px;" converter="promoConverter">  
+                                <f:selectItems value="#{promoController.listaPromociones}" var="promocion" 
+                                               itemLabel="#{promocion.nombrePromo}" itemValue="#{promocion}" /> 
+                            </p:selectOneMenu>
+                            <p:commandButton value="Agregar a favoritas" actionListener="#{favoritasController.agregarFavoritas()}"/>
+                        </p:panelGrid>
+            </h:form>
+ 
+    </h:body>
+</html>

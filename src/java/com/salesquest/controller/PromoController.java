@@ -7,12 +7,14 @@ package com.salesquest.controller;
 
 import com.salesquest.model.Categoria;
 import com.salesquest.model.Promocion;
+import com.salesquest.servicio.ServicioFavorito;
 import com.salesquest.servicio.Servicio_Categoria;
 import com.salesquest.servicio.Servicio_Promocion;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -27,17 +29,18 @@ import org.primefaces.model.DualListModel;
 public class PromoController {
         
     private Promocion promocion = new Promocion();
-    private DualListModel<Promocion> favoritas;
     private List<Categoria> listaCategorias = new ArrayList<Categoria>();
     private List<Promocion> listaPromociones = new ArrayList<Promocion>();
     private List<Promocion> listaPromocionesDeportes = new ArrayList<Promocion>();
     private List<Promocion> listaPromocionesVideoJuegos = new ArrayList<Promocion>();
     
+    @ManagedProperty("#{loginController}")
+    private LoginController usuario;
+    
     public PromoController(){
         this.cargarListaCategorias();
         this.cargarPromociones();
         this.cargarListarXCategoria();
-        this.iniciar();
     }
     
     public PromoController(Promocion promo){
@@ -83,7 +86,7 @@ public class PromoController {
     public void setListaPromocionesVideoJuegos(List<Promocion> listaPromocionesVideoJuegos) {
         this.listaPromocionesVideoJuegos = listaPromocionesVideoJuegos;
     }
-      
+    
     public void cargarListaCategorias(){
         
         Servicio_Categoria s = new Servicio_Categoria();
@@ -109,6 +112,16 @@ public class PromoController {
         }
          
      }
+
+    public LoginController getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(LoginController usuario) {
+        this.usuario = usuario;
+    }
+     
+     
     
     public void cargarPromociones(){
         
@@ -153,42 +166,14 @@ public class PromoController {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
         
-        this.promocion.setNombrePromo("");
         this.promocion.setLinkPromo("");
-        
+        this.promocion.setNombrePromo("");
+       
         this.cargarListaCategorias();
         this.cargarPromociones();
         this.cargarListarXCategoria();
-        this.iniciar();
-             
-    }
-    
-    public void iniciar(){
-    
-        Servicio_Promocion sp = new Servicio_Promocion();
         
-        List<Promocion> promosSource = new ArrayList<Promocion>();
-        
-        for (Object o : sp.mostrarDatos()) {
-            promosSource.add((Promocion)o);
-        }
-        
-        List<Promocion> promosTarget = new ArrayList<Promocion>();
-         
-        this.favoritas = new DualListModel<Promocion>(promosSource, promosTarget);
-        
-    
     }
-
-    public DualListModel<Promocion> getFavoritas() {
-        return favoritas;
-    }
-
-    public void setFavoritas(DualListModel<Promocion> favoritas) {
-        this.favoritas = favoritas;
-    }
-    
-    
-      
+        
 }
 

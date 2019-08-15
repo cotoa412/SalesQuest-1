@@ -84,7 +84,15 @@ public class perfilController {
         
         this.cargarListaCategoria();
         
-        
+        if (this.perfil.getUsuario().getDireccion() == null || this.perfil.getUsuario().getTelefono() == null || this.perfil.getUsuario().getFechaNacimiento() == null || this.perfil.getUsuario().getEstadoCivil() == null || this.perfil.getUsuario().getCategoriaFavorita() == null) {
+            
+            this.editar2 = false;
+            
+        }else if(this.perfil.getUsuario().getDireccion() != null || this.perfil.getUsuario().getTelefono() != null || this.perfil.getUsuario().getFechaNacimiento() != null || this.perfil.getUsuario().getEstadoCivil() != null || this.perfil.getUsuario().getCategoriaFavorita() != null){
+            
+            this.editar2 = true;
+            
+        }
             
         
         

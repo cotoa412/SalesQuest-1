@@ -66,6 +66,14 @@ and open the template in the editor.
                         height="500" marginheight="5" marginwidth="10" >
                 </iframe>
             </p:dialog>
+            
+            <p:dialog header="Agregar a Favorito" widgetVar="promo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                    <iframe frameborder="0" align="left"
+                        src="http://localhost:8080/SalesQuest/faces/agregarFavorita.xhtml"
+                        name="someName" scrolling="auto" width="750"
+                        height="500" marginheight="5" marginwidth="10" >
+                    </iframe>
+            </p:dialog>
 
             <p:menubar>
 
@@ -73,10 +81,11 @@ and open the template in the editor.
 
                 <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" />
 
-                <p:menuitem value="Agregar Promocion" actionListener="#{promoController}" onclick="PF('dlg3').show();" />
-
+                <p:menuitem value="Ver pormos favoritas" actionListener="#{favoritasController.redireccionarFavoritas()}" />
+                
+                <p:menuitem value="Agregar a favoritas" onclick="PF('promo').show();" />
+                
                 <f:facet name="options">
-
                     <h:outputText value="Bienvenido #{perfilController.perfil.usuario.nombre}" />
                     <h:outputText value="      " />
                     <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
@@ -87,7 +96,29 @@ and open the template in the editor.
         </h:form>
         <p:growl id="msg" showDetail="true" life="2000" />
         
-        <p:carousel value="#{promoController.listaPromocionesVideoJuegos}" autoPlayInterval="5000" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+        <p:carousel styleClass="carousel" value="#{promoController.listaPromocionesVideoJuegos}" autoPlayInterval="5000" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
+            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                <f:facet name="header">
+                        <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                </f:facet>
+ 
+                <h:outputText value="Nombre:" />
+                <h:outputText value="#{promocion.nombrePromo}" />
+                
+                <h:outputText value="Categoria:" />
+                <h:outputText value="#{promocion.categoria}" />
+ 
+                <h:outputText value="Link:" />
+                    <a href="#{promocion.linkPromo}" target="_blank">Ver Promo</a>
+                
+                <f:facet name="footer">
+                    <p:commandButton value="Agregar a favoritas" onclick="PF('promo').show();"/> 
+                </f:facet>
+     
+            </p:panelGrid>
+        </p:carousel>
+        
+        <p:carousel styleClass="carousel" value="#{promoController.listaPromocionesDeportes}" autoPlayInterval="5000" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
                         <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
@@ -109,46 +140,7 @@ and open the template in the editor.
             </p:panelGrid>
         </p:carousel>
         
-        <p:carousel value="#{promoController.listaPromocionesDeportes}" autoPlayInterval="5000" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:20px">
-            <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-                <f:facet name="header">
-                        <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
-                </f:facet>
- 
-                <h:outputText value="Nombre:" />
-                <h:outputText value="#{promocion.nombrePromo}" />
-                
-                <h:outputText value="Categoria:" />
-                <h:outputText value="#{promocion.categoria}" />
- 
-                <h:outputText value="Link:" />
-                <a href="#{promocion.linkPromo}">Ver Promo</a>
-                
-                <f:facet name="footer">
-                        
-                </f:facet>
- 
-            </p:panelGrid>
-        </p:carousel>
-        
-        <p:pickList id="PickList" value="#{promoController.favoritas}" var="favorito" effect="bounce"
-                    itemValue="#{favorito}" itemLabel="#{favorito}" showSourceControls="false" showTargetControls="true" showCheckbox="false"
-                    showSourceFilter="true" showTargetFilter="false" filterMatchMode="contains"  responsive="true">
-
-            <f:facet name="sourceCaption">Promociones</f:facet>
-            <f:facet name="targetCaption">Favoritas</f:facet>
-
-            <p:ajax event="transfer" listener="#{promoController.onTransfer}" update="msg" />
-
-            <p:column style="width:20px">
-                <img src="../Images/promocion.jpg" width="20" height="20"></img>
-            </p:column>
-
-            <p:column style="width:20px;">
-                <h:outputText value="#{promoController.favoritas.target}" />
-            </p:column>
-        </p:pickList>
-
+    
         <h:form id="form">
 
             <p:growl id="msgs" showDetail="true" />

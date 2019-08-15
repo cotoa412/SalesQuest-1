@@ -7,7 +7,6 @@ package com.salesquest.servicio;
 
 import com.salesquest.model.Categoria;
 import com.salesquest.model.Promocion;
-import com.salesquest.model.Usuario;
 import static com.salesquest.servicio.Servicio.conn;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -99,7 +98,50 @@ public class Servicio_Promocion extends Servicio implements IDAO{
     public void eliminarDato(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public void anadirFavorito(){
+    
+    public Promocion seleccionarPromo(String promo){
+    
+        Servicio_Categoria sc = new Servicio_Categoria();
+        ResultSet rs = null;
+        Statement stmt = null;
+        Promocion promocion = null;
+        Categoria categoria = new Categoria();
+        try{
+            this.conectar();
+            
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM promocion WHERE idPromocion='"+promo+"'";
+            
+            rs = stmt.executeQuery(sql);
+            
+           if(rs.next()){
+               
+               for (Object o : sc.mostrarDatos()) {
+                   if (rs.getInt("categoria") == ((Categoria)o).getIdCategoria()) {
+                       categoria = (Categoria)o;
+                   }
+               }
+               
+              promocion = new Promocion(rs.getInt("idPromocion"),rs.getString("linkPromocion"),rs.getString("nombrePromocion"),categoria);
+           }
+             
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try{
+                
+                rs.close();
+                stmt.close();
+                this.desconectar();
+                
+            }catch(Exception e){
+                
+                e.printStackTrace();
+            
+            }
+        }
+        return promocion;
         
     }
+    
 }

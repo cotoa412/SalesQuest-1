@@ -71,7 +71,10 @@ public class Promocion {
     }
 
 
-    
+   public String toString(){
+   
+       return this.getIdPromocion() + " " + this.getNombrePromo() + " " +this.getLinkPromo();
+   } 
     
     
 }
