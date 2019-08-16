@@ -76,7 +76,7 @@ and open the template in the editor.
                 <iframe frameborder="0" align="left"
                         src="http://localhost:8080/SalesQuest/faces/agregarFavorita.xhtml"
                         name="someName" scrolling="auto" width="500"
-                        height="150" marginheight="5" marginwidth="10" >
+                        height="350" marginheight="5" marginwidth="10" >
                 </iframe>
             </p:dialog>
 
@@ -104,7 +104,7 @@ and open the template in the editor.
 
         </h:form>
 
-        <p:carousel class="carousel" autoPlayInterval="5000" value="#{promoController.listaPromocionesVideoJuegos}" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
+        <p:carousel class="carousel" autoPlayInterval="5000" effectDuration="3000" value="#{promoController.listaPromocionesVideoJuegos}" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:autoUpdate />
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
@@ -137,7 +137,7 @@ and open the template in the editor.
             </p:panelGrid>
         </p:carousel>
 
-        <p:carousel class="carousel" autoPlayInterval="5000" value="#{promoController.listaPromocionesDeportes}" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
+        <p:carousel class="carousel" autoPlayInterval="5000" effectDuration="3000" value="#{promoController.listaPromocionesDeportes}" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:autoUpdate />
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">

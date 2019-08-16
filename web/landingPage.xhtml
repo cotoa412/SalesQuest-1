@@ -103,7 +103,7 @@ and open the template in the editor.
                 <h:outputText value="#{promocion.categoria}" />
 
                 <h:outputText value="Link:" />
-                <a href="#{promocion.linkPromo}">Ver Promo</a>
+                <p:commandLink value="Ver promo" actionListener="#{registroController.linkRegistrar()}"/>
 
                 <a href="http://t.me/SalesQuestBot"><img src="Images/telegram.png" width="20" height="20"/></a>
                 <f:facet name="footer">
