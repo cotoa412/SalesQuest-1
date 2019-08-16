@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>
+        <meta property="og:url"           content="https://salesquest.website" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="SalesQuest" />
+        <meta property="og:description"   content="Promociones para todos!" />
+        <meta property="og:image"         content="https://salesquest.website/Images/promocion.jpg" />
+        <title>Compartir</title>        
+    </h:head>
+    <h:body>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v2.6";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <h:form>
+
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+
+            <div style="width: 100%; justify-content: center; display: flex;">
+                <p:outputLabel value="#{favoritasController.u.usuario.nombre} seleccione una promo para compartir"/>
+            </div>
+
+            <br/>
+
+            <p:panelGrid columns="2">
+                <p:selectOneMenu value="#{favoritasController.promoSeleccionada}" 
+                                 style="min-width:150px; width:250px;" converter="promoConverter">  
+                    <f:selectItems value="#{favoritasController.promociones}" var="promocion" 
+                                   itemLabel="#{promocion.nombrePromo}" itemValue="#{promocion}" /> 
+                </p:selectOneMenu>
+                <p:commandButton value="Confirmar" action="#{faceController.ensenar}" update="@form"/>
+
+                <h:outputText value="#{favoritasController.promoSeleccionada.linkPromo}" rendered="#{faceController.ensena}"/>
+                <h:outputText value="Subraye el link y use 'Compartir Cita'" rendered="#{faceController.ensena}"/>
+
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+    <div class="fb-quote"></div>
+</html>

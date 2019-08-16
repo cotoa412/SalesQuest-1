@@ -12,6 +12,11 @@ and open the template in the editor.
     <h:form>
         <h:head>
             <title>SalesQuest</title>
+            <meta property="og:url"           content="https://salesquest.website" />
+            <meta property="og:type"          content="website" />
+            <meta property="og:title"         content="SalesQuest" />
+            <meta property="og:description"   content="Promociones para todos!" />
+            <meta property="og:image"         content="https://salesquest.website/Images/promocion.jpg" />
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> </link>
             <style>
@@ -51,30 +56,30 @@ and open the template in the editor.
             </style>             
         </h:head>
     </h:form>
-    
+
     <h:body>
         <p:graphicImage value="../Images/logo.png" height="100" width="150"/> 
-       
+
         <h:form>  
-            
+
             <p:growl id="messages"/>
-            
+
             <p:dialog header="Agregar Promoción" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="300">
                 <iframe frameborder="0" align="left"
-                src="https://salesquest.website/faces/agregarPromo.xhtml?faces-redirect=true"
-                name="someName" id="someId" scrolling="auto" width="750"
-                height="500" marginheight="5" marginwidth="10" >
+                        src="https://salesquest.website/faces/agregarPromo.xhtml?faces-redirect=true"
+                        name="someName" id="someId" scrolling="auto" width="750"
+                        height="500" marginheight="5" marginwidth="10" >
                 </iframe>
             </p:dialog>
-            
+
             <p:dialog header="Agregar a Favorito" widgetVar="promo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                    <iframe frameborder="0" align="left"
+                <iframe frameborder="0" align="left"
                         src="http://localhost:8080/SalesQuest/faces/agregarFavorita.xhtml"
                         name="someName" scrolling="auto" width="500"
                         height="150" marginheight="5" marginwidth="10" >
-                    </iframe>
+                </iframe>
             </p:dialog>
-        
+
             <p:menubar style=" border: solid gray 2px; border-radius: 5px;">
 
                 <p:menuitem value="Contactenos" actionListener="#{contactoController.redireccionar()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
@@ -82,7 +87,7 @@ and open the template in the editor.
                 <p:menuitem value="Perfil" actionListener="#{perfilController.redireccionarPerfil()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;"  />
 
                 <p:menuitem value="Ver Favoritas" actionListener="#{favoritasController.redireccionarFavoritas()}" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
-                
+
                 <p:menuitem value="Agregar a favoritas" onclick="PF('promo').show();" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
 
                 <p:menuitem value="Agregar Promocion" actionListener="#{promoController}" onclick="PF('dlg3').show();" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
@@ -93,62 +98,78 @@ and open the template in the editor.
                     <h:outputText value="      " />
                     <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
                     <p:commandButton value="Cerrar Sesión" actionListener="#{loginController.logout()}"   />
-                    
+
                 </f:facet>
             </p:menubar>
- 
+
         </h:form>
 
         <p:carousel class="carousel" autoPlayInterval="5000" value="#{promoController.listaPromocionesVideoJuegos}" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:autoUpdate />
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
-                        <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                    <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
                 </f:facet>
- 
+
                 <h:outputText value="Nombre:" />
                 <h:outputText value="#{promocion.nombrePromo}" />
-                
+
                 <h:outputText value="Categoria:" />
                 <h:outputText value="#{promocion.categoria}" />
- 
+
                 <h:outputText value="Link:" />
                 <a href="#{promocion.linkPromo}">Ver Promo</a>
-                
+
                 <a href="http://t.me/SalesQuestBot"><img src="../Images/telegram.png" width="20" height="20"/></a>
-                
+
                 <f:facet name="footer">
-                        
+                    <h:form>
+                        <p:dialog header="Compartir con Facebook" widgetVar="face" modal="true" showEffect="fade" hideEffect="fade" resizable="true">
+                            <iframe frameborder="0" align="left"
+                                    src="http://localhost:8080/SalesQuest/faces/compartirFace.xhtml"
+                                    name="someName" scrolling="auto" width="500"
+                                    height="300" marginheight="5" marginwidth="10" >
+                            </iframe>                                
+                        </p:dialog>  
+                    </h:form>   
                 </f:facet>
- 
+
             </p:panelGrid>
         </p:carousel>
-        
+
         <p:carousel class="carousel" autoPlayInterval="5000" value="#{promoController.listaPromocionesDeportes}" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:autoUpdate />
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
-                        <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                    <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
                 </f:facet>
- 
+
                 <h:outputText value="Nombre:" />
                 <h:outputText value="#{promocion.nombrePromo}" />
-                
+
                 <h:outputText value="Categoria:" />
                 <h:outputText value="#{promocion.categoria}" />
- 
+
                 <h:outputText value="Link:" />
                 <a href="#{promocion.linkPromo}">Ver Promo</a>
-                
+
                 <a href="http://t.me/SalesQuestBot"><img src="../Images/telegram.png" width="20" height="20"/></a>
-                
+
                 <f:facet name="footer">
-                        
+                    <h:form>
+                        <p:dialog header="Compartir con Facebook" widgetVar="face" modal="true" showEffect="fade" hideEffect="fade" resizable="true">
+                            <iframe frameborder="0" align="left"
+                                    src="http://localhost:8080/SalesQuest/faces/compartirFace.xhtml"
+                                    name="someName" scrolling="auto" width="500"
+                                    height="300" marginheight="5" marginwidth="10" >
+                            </iframe>                                
+                        </p:dialog>  
+                    </h:form>
                 </f:facet>
- 
+
             </p:panelGrid>
         </p:carousel>
-      
+
         <h:form id="form" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
 
             <p:growl id="msgs" showDetail="true" />
@@ -181,5 +202,21 @@ and open the template in the editor.
             <p></p>
             <p:commandButton value="Enviar" action="#{contactoController.enviarOpinion()}" update="@form"/>                         
         </h:form>
+        <h:form style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
+            <div class="fb-share-button" 
+                 data-href="https://salesquest.website" 
+                 data-layout="button_count">
+            </div>
+        </h:form>          
     </h:body>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v2.6";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>    
 </html> 
