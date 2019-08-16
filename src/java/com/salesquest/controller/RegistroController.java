@@ -48,8 +48,7 @@ public class RegistroController {
    
     public void linkRegistrar() {
         this.cargarLista();
-        this.redirect();
-        
+        this.redirect();     
     }
     
    public void redirect() {

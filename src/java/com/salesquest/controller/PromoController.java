@@ -131,27 +131,7 @@ public class PromoController {
         }
          
     }
-    
-    public void redireccionar(){
-    
-    try {
-           
-            HttpServletRequest request = (HttpServletRequest) FacesContext
-                    .getCurrentInstance().getExternalContext().getRequest();
-            FacesContext
-                    .getCurrentInstance()
-                    .getExternalContext()
-                    .redirect(
-                            request.getContextPath()
-                            + "/faces/agregarPromo.xhtml?faces-redirect=true");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    
-    
-    
-    }
-    
+     
     public void agregarPromo(){
           
         Servicio_Promocion sp = new Servicio_Promocion();
@@ -171,6 +151,8 @@ public class PromoController {
         this.cargarListaCategorias();
         this.cargarPromociones();
         this.cargarListarXCategoria();
+        
+        
         
     }
     
