@@ -7,7 +7,6 @@ package com.salesquest.controller;
 
 import com.salesquest.model.Categoria;
 import com.salesquest.model.Promocion;
-import com.salesquest.servicio.ServicioFavorito;
 import com.salesquest.servicio.Servicio_Categoria;
 import com.salesquest.servicio.Servicio_Promocion;
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-
 /**
  *
  * @author Kainthel
@@ -28,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 public class PromoController {
         
     private Promocion promocion = new Promocion();
+    private Promocion promoBuscar = new Promocion();
     private List<Categoria> listaCategorias = new ArrayList<Categoria>();
     private List<Promocion> listaPromociones = new ArrayList<Promocion>();
     private List<Promocion> listaPromocionesDeportes = new ArrayList<Promocion>();
@@ -85,6 +84,57 @@ public class PromoController {
     public void setListaPromocionesVideoJuegos(List<Promocion> listaPromocionesVideoJuegos) {
         this.listaPromocionesVideoJuegos = listaPromocionesVideoJuegos;
     }
+
+    public Promocion getPromoBuscar() {
+        return promoBuscar;
+    }
+
+    public void setPromoBuscar(Promocion promoBuscar) {
+        this.promoBuscar = promoBuscar;
+    }
+    
+    public void buscarPromo(){
+    
+        
+            for (Object obj : this.listaPromociones) {
+                if (((Promocion)obj).getNombrePromo().equalsIgnoreCase(this.promoBuscar.getNombrePromo())) {
+                    
+                    this.promoBuscar = ((Promocion)obj);
+                    
+                }
+            }
+        
+            if (promoBuscar != null) {
+            
+                try {    
+                    HttpServletRequest request = (HttpServletRequest) FacesContext
+                            .getCurrentInstance().getExternalContext().getRequest();
+                    FacesContext
+                            .getCurrentInstance()
+                            .getExternalContext()
+                            .redirect(
+                                    request.getContextPath()
+                                    + "/faces/newxhtml.xhtml?faces-redirect=true");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+        }else{
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No se encontro la promocion.");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+        
+        
+        
+        
+    
+    }
+    
+    public void redireccionarPromoBuscada(){
+    
+    
+    
+    }
         
     public void cargarListaCategorias(){
         
@@ -131,7 +181,8 @@ public class PromoController {
         }
          
     }
-     
+    
+    
     public void agregarPromo(){
           
         Servicio_Promocion sp = new Servicio_Promocion();
@@ -148,15 +199,12 @@ public class PromoController {
         this.promocion.setLinkPromo("");
         this.promocion.setNombrePromo("");
        
+        this.cargarListarXCategoria();
         this.cargarListaCategorias();
         this.cargarPromociones();
-        this.cargarListarXCategoria();
-        
-        
         
     }
     
-   
-        
+          
 }
 

@@ -77,7 +77,7 @@ and open the template in the editor.
                         src="https://salesquest.website/faces/agregarFavorita.xhtml?faces-redirect=true"
                         name="someName" scrolling="auto" width="500"
                         height="350" marginheight="5" marginwidth="10" >
-                </iframe>
+                </iframe>          
             </p:dialog>
 
             <p:menubar style=" border: solid gray 2px; border-radius: 5px;">
@@ -96,15 +96,16 @@ and open the template in the editor.
 
                     <h:outputText value="Bienvenido #{perfilController.perfil.usuario.nombre}" />
                     <h:outputText value="      " />
-                    <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-                    <p:commandButton value="Cerrar Sesión" actionListener="#{loginController.logout()}"   />
-
+                    <p:inputText value="#{promoController.promoBuscar.nombrePromo}" placeholder="Buscar"/>
+                    <p:commandButton value="Buscar" actionListener="#{promoController.buscarPromo()}" update="@form"/>
+                    <p:commandButton value="Salir" actionListener="#{loginController.logout()}" update="@form"/>
+                    
                 </f:facet>
             </p:menubar>
 
         </h:form>
-
-        <p:carousel class="carousel" autoPlayInterval="5000" effectDuration="3000" value="#{promoController.listaPromocionesVideoJuegos}" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
+                
+        <p:carousel autoPlayInterval="5000" effectDuration="3000" value="#{promoController.listaPromocionesVideoJuegos}" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:autoUpdate />
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
@@ -137,7 +138,7 @@ and open the template in the editor.
             </p:panelGrid>
         </p:carousel>
 
-        <p:carousel class="carousel" autoPlayInterval="5000" effectDuration="3000" value="#{promoController.listaPromocionesDeportes}" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
+        <p:carousel autoPlayInterval="5000" effectDuration="3000" value="#{promoController.listaPromocionesDeportes}" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:autoUpdate />
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
@@ -169,6 +170,8 @@ and open the template in the editor.
 
             </p:panelGrid>
         </p:carousel>
+            
+         
 
         <h:form id="form" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
 

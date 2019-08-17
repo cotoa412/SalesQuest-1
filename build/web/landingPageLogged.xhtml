@@ -91,10 +91,13 @@ and open the template in the editor.
                 <p:menuitem value="Agregar a favoritas" onclick="PF('promo').show();" style=" border: solid gray 2px; border-radius: 5px; color: white; background-color: #232323; margin: 0 3px;" />
 
                 <f:facet name="options">
+                    
                     <h:outputText value="Bienvenido #{perfilController.perfil.usuario.nombre}" />
                     <h:outputText value="      " />
-                    <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-                    <p:commandButton value="Cerrar Sesión" actionListener="#{loginController.logout()}"   />
+                    <p:inputText value="#{promoController.promoBuscar.nombrePromo}" placeholder="Buscar"/>
+                    <p:commandButton value="Buscar" actionListener="#{promoController.buscarPromo()}" update="@form"/>
+                    <p:commandButton value="Salir" actionListener="#{loginController.logout()}" update="@form"/>
+                    
                 </f:facet>
             </p:menubar>
 
@@ -104,7 +107,7 @@ and open the template in the editor.
         <p:carousel styleClass="carousel" value="#{promoController.listaPromocionesVideoJuegos}" circular="true" autoPlayInterval="5000" effect="fade" effectDuration="3000" headerText="Video Juegos" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
-                    <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                    <img src="https://salesquest.website/Images/promocion.jpg" width="150" height="150" alt="promo"></img>
                 </f:facet>
 
                 <h:outputText value="Nombre:" />
@@ -136,7 +139,7 @@ and open the template in the editor.
         <p:carousel styleClass="carousel" value="#{promoController.listaPromocionesDeportes}" circular="true"  autoPlayInterval="5000" effect="fade" effectDuration="3000" headerText="Deportes" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
-                    <img src="../Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                    <img src="https://salesquest.website/Images/promocion.jpg" width="150" height="150" alt="promo"></img>
                 </f:facet>
 
                 <h:outputText value="Nombre:" />

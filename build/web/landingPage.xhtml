@@ -9,7 +9,7 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <h:form>
+    
         <h:head>
             <title>SalesQuest</title>
             <meta property="og:url"           content="https://salesquest.website" />
@@ -60,7 +60,7 @@ and open the template in the editor.
                 }
             </style>            
         </h:head>
-    </h:form>
+    
 
     <h:body>
         <p:graphicImage value="Images/logo.png" height="100" width="150"/> 
@@ -93,7 +93,7 @@ and open the template in the editor.
         <p:carousel styleClass="carousel" value="#{promoController.listaPromociones}" circular="true" autoPlayInterval="5000" effect="fade" effectDuration="3000" headerText="Reciente" var="promocion" itemStyle="text-align:center" responsive="true" style="margin-top:0;border: solid gray 2px; border-radius: 5px;">
             <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
                 <f:facet name="header">
-                    <img src="Images/promocion.jpg" width="150" height="150" alt="promo"></img>
+                    <img src="https://salesquest.website/Images/promocion.jpg" width="150" height="150" alt="promo"></img>
                 </f:facet>
 
                 <h:outputText value="Nombre:" />
