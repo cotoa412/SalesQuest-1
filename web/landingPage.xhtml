@@ -103,11 +103,11 @@ and open the template in the editor.
                 <h:outputText value="#{promocion.categoria}" />
 
                 <h:outputText value="Link:" />
-                <p:commandLink value="Ver promo" actionListener="#{registroController.linkRegistrar()}"/>
+                <p:commandLink value="Ver promo" actionListener="#{loginController.redireccionar()}"/>
 
                 <a href="http://t.me/SalesQuestBot"><img src="Images/telegram.png" width="20" height="20"/></a>
                 <f:facet name="footer">
-                    <p:commandButton value="Compartir" onclick="PF('face').show();"/>
+                    
                 </f:facet>
 
             </p:panelGrid>
