@@ -47,8 +47,10 @@ and open the template in the editor.
                                    itemLabel="#{promocion.nombrePromo}" itemValue="#{promocion}" /> 
                 </p:selectOneMenu>
                 <p:commandButton value="Confirmar" action="#{faceController.ensenar}" update="@form"/>
-
+                
+                <p>
                 <h:outputText value="#{favoritasController.promoSeleccionada.linkPromo}" rendered="#{faceController.ensena}"/>
+                </p>
                 <h:outputText value="Subraye el link y use 'Compartir Cita'" rendered="#{faceController.ensena}"/>
 
             </p:panelGrid>
