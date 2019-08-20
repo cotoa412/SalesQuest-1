@@ -123,14 +123,16 @@ and open the template in the editor.
 
                 <f:facet name="footer">
                     <h:form>
+                        <p:commandButton value="Compartir" onclick="PF('face').show()"/>
+                    </h:form>    
                         <p:dialog header="Compartir con Facebook" widgetVar="face" modal="true" showEffect="fade" hideEffect="fade" resizable="true">
                             <iframe frameborder="0" align="left"
-                                    src="http://localhost:8080/SalesQuest/faces/compartirFace.xhtml"
+                                    src="https://salesquest.website/faces/compartirFace.xhtml"
                                     name="someName" scrolling="auto" width="500"
                                     height="300" marginheight="5" marginwidth="10" >
                             </iframe>                                
                         </p:dialog>  
-                    </h:form>
+                    
                 </f:facet>
 
             </p:panelGrid>
@@ -154,16 +156,7 @@ and open the template in the editor.
                 <a href="http://t.me/SalesQuestBot"><img src="../Images/telegram.png" width="20" height="20"/></a>
 
                 <f:facet name="footer">
-                    <p:commandButton value="Compartir" onclick="PF('face').show()"/>
-                    <h:form>
-                        <p:dialog header="Compartir con Facebook" widgetVar="face" modal="true" showEffect="fade" hideEffect="fade" resizable="true">
-                            <iframe frameborder="0" align="left"
-                                    src="http://localhost:8080/SalesQuest/faces/compartirFace.xhtml"
-                                    name="someName" scrolling="auto" width="500"
-                                    height="300" marginheight="5" marginwidth="10" >
-                            </iframe>                                
-                        </p:dialog>  
-                    </h:form>      
+                        
                 </f:facet>
 
             </p:panelGrid>

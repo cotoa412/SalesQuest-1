@@ -18,6 +18,42 @@ and open the template in the editor.
         <title>Compartir</title>        
     </h:head>
     <h:body>
+    
+        <h:form >
+
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+
+            <div style=" width: 600px; margin: 0 auto;">
+            
+            <div style="width: 600px; justify-content: center; display: flex; margin: 15px auto;">
+                <p:outputLabel value="Seleccione una promo para compartir"/>
+            </div>
+
+            <div style="width: 600px; justify-content: center; display: flex; margin: 15px auto;">
+            <p:selectOneMenu value="#{favoritasController.promoSeleccionada}" 
+                                 style="min-width:150px; width:250px;" converter="promoConverter">  
+                <f:selectItems value="#{favoritasController.promociones}" var="promocion" 
+                                   itemLabel="#{promocion.nombrePromo}" itemValue="#{promocion}" /> 
+            </p:selectOneMenu>
+            </div>
+                
+            <div style="width: 600px; justify-content: center; display: flex; margin: 15px auto;">    
+            <p:commandButton value="Confirmar" action="#{faceController.ensenar}" update="@form"/>
+            </div>        
+            <div style="width: 600px; justify-content: center; display: flex; margin: 15px auto;">
+                    
+                <div class="fb-quote"></div>
+                <h:outputText value="Subraye el link y use 'Compartir Cita'" rendered="#{faceController.ensena}"/>
+                <br/>
+                <h:outputText value="#{favoritasController.promoSeleccionada.linkPromo}" rendered="#{faceController.ensena}"/>
+                   
+            </div>
+                
+            </div>
+          
+        </h:form>
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -27,34 +63,8 @@ and open the template in the editor.
             js.id = id;
             js.src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&amp;version=v2.6";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        <h:form>
-
-            <p:messages id="messages" showDetail="true" closable="true">
-                <p:autoUpdate />
-            </p:messages>
-
-            <div style="width: 100%; justify-content: center; display: flex;">
-                <p:outputLabel value="#{favoritasController.u.usuario.nombre} seleccione una promo para compartir"/>
-            </div>
-
-            <br/>
-
-            <p:panelGrid columns="2">
-                <p:selectOneMenu value="#{favoritasController.promoSeleccionada}" 
-                                 style="min-width:150px; width:250px;" converter="promoConverter">  
-                    <f:selectItems value="#{favoritasController.promociones}" var="promocion" 
-                                   itemLabel="#{promocion.nombrePromo}" itemValue="#{promocion}" /> 
-                </p:selectOneMenu>
-                <p:commandButton value="Confirmar" action="#{faceController.ensenar}" update="@form"/>
-                
-                <p>
-                <h:outputText value="#{favoritasController.promoSeleccionada.linkPromo}" rendered="#{faceController.ensena}"/>
-                </p>
-                <h:outputText value="Subraye el link y use 'Compartir Cita'" rendered="#{faceController.ensena}"/>
-
-            </p:panelGrid>
-        </h:form>
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     </h:body>
-    <div class="fb-quote"></div>
+    
 </html>
