@@ -140,7 +140,7 @@ public class LoginController {
                     .getExternalContext()
                     .redirect(
                             request.getContextPath()
-                            + "/faces/landingPage.xhtml?faces-redirect=true");
+                            + "/faces/login.xhtml?faces-redirect=true");
         } catch (Exception e) {
             e.printStackTrace();
         }
